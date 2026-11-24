@@ -1,0 +1,3592 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sugestões de projetos por coleção · Dive.b 2027</title>
+  <!-- Carregamento externo exclusivo dos dados (118 projetos, anos, segmentos e 219 códigos BNCC) -->
+  <script src="dados_dive_b.js"></script>
+  <style>
+    /* ==========================================================================
+       1. TIPOGRAFIA E VARIÁVEIS DE MARCA (MANUAL DE MARCA DIVE.B)
+       ========================================================================== */
+    @font-face {
+      font-family: 'Suspire';
+      src: url('fonts/SuspireTest-Regular.ttf') format('truetype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Suspire';
+      src: url('fonts/SuspireTest-Italic.ttf') format('truetype');
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Suspire';
+      src: url('fonts/SuspireTest-Bold.ttf') format('truetype');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Suspire';
+      src: url('fonts/SuspireTest-ExtraBold.ttf') format('truetype');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Suspire';
+      src: url('fonts/SuspireTest-Black.ttf') format('truetype');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --navy: #2B357F;
+      --navy-dark: #1E255E;
+      --anil: #798ED0;
+      --anil-dark: #4D63B0;
+      --teal: #2A6E81;
+      --green: #73CC7D;
+      --green-text: #2F8A3C;
+      --coral: #F14A5B;
+      --coral-dark: #D63445;
+      --lemon: #B3DC2F;
+      --cream: #FFFFF5;
+      --surface: #FFFFFF;
+      --surface-alt: #F7F7EC;
+      --text-main: #22284F;
+      --text-sec: #5A6085;
+      --border: #E3E3D8;
+      --shadow-sm: 0 2px 8px rgba(34, 40, 79, 0.05);
+      --shadow-md: 0 8px 24px rgba(34, 40, 79, 0.09);
+      --shadow-lg: 0 16px 40px rgba(34, 40, 79, 0.16);
+      --radius-sm: 12px;
+      --radius-md: 16px;
+      --radius-lg: 20px;
+      --font-sans: 'Suspire', 'Nunito', 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    /* ==========================================================================
+       2. RESET E ESTILOS BASE
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--cream);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      font-weight: 400;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      margin: 0;
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--navy);
+    }
+
+    button, input, select {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    :focus-visible {
+      outline: 3px solid var(--navy);
+      outline-offset: 2px;
+    }
+
+    mark {
+      background-color: var(--lemon);
+      color: var(--navy);
+      padding: 0 3px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    [hidden] { display: none !important; }
+    .mobile-filters-backdrop { display: none; }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .container {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Tela de erro caso dados_dive_b.js não esteja disponível */
+    .data-error-box {
+      max-width: 560px;
+      margin: 72px auto;
+      padding: 32px 28px;
+      background: var(--surface);
+      border: 2px solid var(--coral);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      box-shadow: var(--shadow-md);
+    }
+    .data-error-box h2 {
+      color: var(--coral-dark);
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+    .data-error-box p {
+      margin: 0;
+      color: var(--text-sec);
+      font-size: 0.95rem;
+    }
+
+    /* ==========================================================================
+       3. CABEÇALHO FIXO E DECORAÇÃO ORGÂNICA
+       ========================================================================== */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 245, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      overflow: hidden;
+    }
+
+    .header-deco {
+      position: absolute;
+      right: -10px;
+      top: -10px;
+      width: 140px;
+      height: 140px;
+      pointer-events: none;
+      opacity: 0.16;
+      z-index: 0;
+    }
+
+    .header-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 14px 24px;
+      max-width: 1440px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      height: 44px;
+      width: auto;
+      max-width: 170px;
+      object-fit: contain;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .brand-titles {
+      min-width: 0;
+    }
+
+    .brand-kicker {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--teal);
+    }
+
+    .brand-title {
+      font-size: 1.18rem;
+      font-weight: 900;
+      color: var(--navy);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .search-box {
+      position: relative;
+      flex: 1 1 260px;
+      max-width: 400px;
+    }
+
+    .search-box svg {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--text-sec);
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 10px 44px 10px 42px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-size: 0.95rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--navy);
+      box-shadow: 0 0 0 3px rgba(43, 53, 127, 0.12);
+    }
+
+    .search-kbd {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-sec);
+      pointer-events: none;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+
+    .nav-pill:hover {
+      border-color: var(--navy);
+      background: var(--surface-alt);
+    }
+
+    .nav-pill.active {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+    }
+
+    .new-tab-link {
+      border-style: dashed;
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    .new-tab-link:hover {
+      background: #EAF4F7;
+      border-color: var(--teal);
+    }
+
+    .badge-count {
+      background: var(--lemon);
+      color: var(--navy);
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 1px 7px;
+      border-radius: 999px;
+    }
+
+    .lang-switch {
+      display: inline-flex;
+      background: var(--surface-alt);
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      padding: 2px;
+    }
+
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 6px 11px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--text-sec);
+      transition: all 0.15s;
+    }
+
+    .lang-btn.active {
+      background: var(--navy);
+      color: #FFFFFF;
+    }
+
+    /* ==========================================================================
+       4. NAVEGAÇÃO POR SEGMENTO E CHIPS DE ANOS
+       ========================================================================== */
+    .segment-nav-wrap {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+
+    .segment-tabs {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .seg-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border);
+      background: var(--cream);
+      transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .seg-tab:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .seg-tab-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-bottom: 4px;
+    }
+
+    .seg-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      display: inline-block;
+    }
+
+    .seg-count {
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(34, 40, 79, 0.08);
+      color: var(--text-main);
+    }
+
+    .seg-tab-title {
+      font-size: 0.98rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .seg-tab-sub {
+      font-size: 0.78rem;
+      opacity: 0.85;
+      margin-top: 2px;
+    }
+
+    /* Estados ativos com contraste AA garantido */
+    .seg-tab.active[data-seg="all"] {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #FFFFFF;
+    }
+    .seg-tab.active[data-seg="ei"] {
+      background: var(--coral-dark);
+      border-color: var(--coral-dark);
+      color: #FFFFFF;
+    }
+    .seg-tab.active[data-seg="efai"] {
+      background: var(--green);
+      border-color: var(--green-text);
+      color: var(--navy);
+    }
+    .seg-tab.active[data-seg="efaf"] {
+      background: var(--anil-dark);
+      border-color: var(--anil-dark);
+      color: #FFFFFF;
+    }
+    .seg-tab.active[data-seg="em"] {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #FFFFFF;
+    }
+
+    .seg-tab.active .seg-count {
+      background: rgba(255, 255, 255, 0.24);
+      color: inherit;
+    }
+    .seg-tab.active[data-seg="efai"] .seg-count {
+      background: rgba(43, 53, 127, 0.14);
+      color: var(--navy);
+    }
+
+    /* Chips de Anos */
+    .years-bar {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px dashed var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .years-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .year-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-main);
+      transition: all 0.15s;
+    }
+
+    .year-chip:hover {
+      border-color: var(--navy);
+    }
+
+    .year-chip.active {
+      background: var(--navy);
+      border-color: var(--navy);
+      color: #FFFFFF;
+    }
+
+    .year-chip-count {
+      font-size: 0.76rem;
+      padding: 1px 7px;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      color: var(--text-sec);
+    }
+
+    .year-chip.active .year-chip-count {
+      background: rgba(255, 255, 255, 0.22);
+      color: #FFFFFF;
+    }
+
+    .pending-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #E09F1F;
+      display: inline-block;
+    }
+
+    .pending-banner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #FFF8E6;
+      border: 1px solid #F2D388;
+      color: #6B4D08;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       5. LAYOUT PRINCIPAL (SIDEBAR DE FILTROS + ÁREA DE RESULTADOS)
+       ========================================================================== */
+    .catalog-layout {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 28px;
+      padding-top: 24px;
+      padding-bottom: 56px;
+      align-items: start;
+    }
+
+    .filters-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      position: sticky;
+      top: 86px;
+      max-height: calc(100vh - 106px);
+      overflow-y: auto;
+    }
+
+    .filters-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filters-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
+    .btn-clear-filters {
+      background: transparent;
+      border: none;
+      color: var(--coral-dark);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-decoration: underline;
+      padding: 4px;
+    }
+
+    .btn-clear-filters:disabled {
+      opacity: 0.4;
+      cursor: default;
+      text-decoration: none;
+    }
+
+    .filter-group {
+      margin-bottom: 18px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .filter-group:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .filter-group-title {
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-sec);
+      margin-bottom: 10px;
+    }
+
+    .filter-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+      max-height: 210px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .filter-option {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+      font-size: 0.86rem;
+      cursor: pointer;
+      padding: 3px 4px;
+      border-radius: 8px;
+      transition: background 0.12s, opacity 0.15s;
+    }
+
+    .filter-option:hover {
+      background: var(--surface-alt);
+    }
+
+    .filter-option.zero {
+      opacity: 0.42;
+    }
+
+    .filter-option-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.3;
+    }
+
+    .filter-option input[type="checkbox"] {
+      margin-top: 2px;
+      accent-color: var(--navy);
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .filter-facet-count {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: var(--text-sec);
+      background: var(--surface-alt);
+      padding: 1px 7px;
+      border-radius: 999px;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       6. BARRA DE CONTROLES E CHIPS ATIVOS
+       ========================================================================== */
+    .results-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .results-count {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .toolbar-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .mobile-filter-btn {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--navy);
+      background: var(--surface);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 0.86rem;
+    }
+
+    .sort-select {
+      padding: 8px 12px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+
+    .view-toggle {
+      display: inline-flex;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: var(--surface);
+      overflow: hidden;
+    }
+
+    .view-btn {
+      border: none;
+      background: transparent;
+      padding: 7px 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-sec);
+    }
+
+    .view-btn.active {
+      background: var(--navy);
+      color: #FFFFFF;
+    }
+
+    .active-chips-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .active-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: var(--navy);
+      color: #FFFFFF;
+      font-size: 0.8rem;
+      font-weight: 700;
+      border: none;
+    }
+
+    .active-chip span[aria-hidden] {
+      font-size: 1rem;
+      line-height: 1;
+    }
+
+    /* ==========================================================================
+       7. CARDS E LISTA DE PROJETOS
+       ========================================================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 20px;
+    }
+
+    .projects-grid.list-view {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+      position: relative;
+      border-left: 7px solid var(--seg-color, var(--navy));
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-body {
+      padding: 18px 20px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      gap: 10px;
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .card-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .seg-pill {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      padding: 3px 9px;
+      border-radius: 999px;
+    }
+
+    .year-pill {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      color: var(--text-sec);
+      border: 1px solid var(--border);
+    }
+
+    .star-btn {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--text-sec);
+      transition: all 0.15s;
+    }
+
+    .star-btn:hover {
+      border-color: var(--navy);
+      color: var(--navy);
+    }
+
+    .star-btn.starred {
+      background: #FFF6D6;
+      border-color: #E5B422;
+      color: #C98A00;
+    }
+
+    .card-title-btn {
+      background: none;
+      border: none;
+      padding: 0;
+      text-align: left;
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.3;
+    }
+
+    .card-title-btn:hover {
+      text-decoration: underline;
+    }
+
+    .card-subtitle {
+      font-size: 0.86rem;
+      font-weight: 700;
+      color: var(--teal);
+      margin-top: -4px;
+    }
+
+    .card-desc {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      line-height: 1.48;
+    }
+
+    .card-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.82rem;
+      color: var(--text-sec);
+      background: var(--surface-alt);
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+    }
+
+    .card-meta strong {
+      color: var(--text-main);
+      font-weight: 700;
+    }
+
+    .card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .tag-chip {
+      font-size: 0.74rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 8px;
+      background: #EEF1FA;
+      color: var(--navy);
+    }
+
+    .card-footer {
+      padding: 11px 20px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      background: #FCFCF6;
+    }
+
+    .source-badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 6px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .source-badge.manual {
+      background: #E8F5EA;
+      color: #21662B;
+    }
+
+    .source-badge.book {
+      background: #FFF3DC;
+      color: #7D5106;
+    }
+
+    .card-open-link {
+      background: none;
+      border: none;
+      color: var(--navy);
+      font-size: 0.82rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Visão em lista compacta */
+    .projects-grid.list-view .project-card {
+      flex-direction: row;
+      align-items: center;
+      border-radius: var(--radius-md);
+    }
+    .projects-grid.list-view .card-body {
+      flex-direction: row;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 14px 18px;
+      gap: 14px;
+    }
+    .projects-grid.list-view .card-top {
+      order: 1;
+      min-width: 190px;
+    }
+    .projects-grid.list-view .card-main-info {
+      order: 2;
+      flex: 1 1 260px;
+    }
+    .projects-grid.list-view .card-desc {
+      display: none;
+    }
+    .projects-grid.list-view .card-meta {
+      order: 3;
+      flex: 1 1 240px;
+      padding: 6px 10px;
+    }
+    .projects-grid.list-view .card-tags {
+      order: 4;
+      margin-top: 0;
+    }
+    .projects-grid.list-view .card-footer {
+      border-top: none;
+      border-left: 1px solid var(--border);
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 12px 16px;
+      min-width: 185px;
+    }
+
+    .empty-state {
+      background: var(--surface);
+      border: 1.5px dashed var(--border);
+      border-radius: var(--radius-lg);
+      padding: 48px 24px;
+      text-align: center;
+      max-width: 540px;
+      margin: 24px auto;
+    }
+
+    .empty-state h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .empty-state p {
+      color: var(--text-sec);
+      margin: 0 0 20px;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: #FFFFFF;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    /* ==========================================================================
+       8. FICHA COMPLETA DO PROJETO (PAINEL LATERAL NA PRÓPRIA PÁGINA)
+       ========================================================================== */
+    .drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(24, 29, 61, 0.55);
+      backdrop-filter: blur(3px);
+      z-index: 60;
+      display: none;
+      justify-content: flex-end;
+    }
+
+    .drawer-backdrop.open {
+      display: flex;
+    }
+
+    .project-sheet {
+      width: 100%;
+      max-width: 920px;
+      height: 100%;
+      background: var(--cream);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sheet-header {
+      padding: 24px 28px;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .sheet-deco {
+      position: absolute;
+      right: -12px;
+      bottom: -16px;
+      width: 150px;
+      height: 150px;
+      opacity: 0.22;
+      pointer-events: none;
+    }
+
+    .sheet-header-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sheet-kicker {
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.92;
+    }
+
+    .sheet-close-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 999px;
+      border: none;
+      background: rgba(255, 255, 255, 0.25);
+      color: inherit;
+      font-size: 1.3rem;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sheet-close-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .sheet-title {
+      font-size: 1.65rem;
+      font-weight: 900;
+      color: inherit;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sheet-subtitle {
+      font-size: 1.02rem;
+      font-weight: 700;
+      opacity: 0.9;
+      margin-top: 4px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sheet-meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      margin-top: 14px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sheet-components-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sheet-comp-pill {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.22);
+    }
+
+    .sheet-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px 28px;
+    }
+
+    .sheet-grid {
+      display: grid;
+      grid-template-columns: 1.45fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .sheet-section {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .sheet-section-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    /* Passo a passo visual */
+    .steps-timeline {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
+    }
+
+    .step-item {
+      position: relative;
+      padding-left: 42px;
+      padding-bottom: 18px;
+      font-size: 0.94rem;
+    }
+
+    .step-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .step-item:not(:last-child)::before {
+      content: '';
+      position: absolute;
+      left: 14px;
+      top: 30px;
+      bottom: 2px;
+      border-left: 2px dashed var(--seg-color, var(--navy));
+      opacity: 0.55;
+    }
+
+    .step-num {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.84rem;
+      font-weight: 900;
+    }
+
+    /* Bloco lateral Planejamento */
+    .plan-item {
+      margin-bottom: 14px;
+    }
+    .plan-item:last-child {
+      margin-bottom: 0;
+    }
+    .plan-label {
+      display: block;
+      font-size: 0.74rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-sec);
+      margin-bottom: 4px;
+    }
+    .plan-value {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .pills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .skill-pill {
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--navy);
+    }
+
+    /* Tabela BNCC na ficha */
+    .bncc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+    .bncc-table th, .bncc-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+    .bncc-table tr:last-child td {
+      border-bottom: none;
+    }
+    .bncc-code-btn {
+      background: #EEF1FA;
+      color: var(--navy);
+      border: 1px solid #CFD6F0;
+      border-radius: 8px;
+      padding: 4px 9px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+    .bncc-code-btn:hover {
+      background: var(--navy);
+      color: #FFFFFF;
+    }
+
+    /* Habilidades linguísticas */
+    .lang-boxes {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+    }
+    .lang-box {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 14px;
+    }
+    .lang-box-title {
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--teal);
+      margin-bottom: 6px;
+    }
+    .lang-box p {
+      margin: 0;
+      font-size: 0.88rem;
+    }
+
+    /* Caixa Para o Professor */
+    .teacher-box {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .teacher-sub-img {
+      width: 78px;
+      height: auto;
+      flex-shrink: 0;
+    }
+    .teacher-box h4 {
+      color: var(--lemon);
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .teacher-box p {
+      margin: 0;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+    .teacher-pending-note {
+      margin-top: 10px !important;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 0.8rem !important;
+      color: #DCE2FF;
+    }
+
+    /* Alternativa de cópia manual caso o iframe bloqueie navigator.clipboard */
+    .copy-fallback-bar {
+      background: #FFF8E6;
+      border-top: 1px solid #F2D388;
+      padding: 10px 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .copy-fallback-bar label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #6B4D08;
+    }
+    .copy-fallback-input {
+      flex: 1 1 240px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1.5px solid #D9B65B;
+      background: #FFFFFF;
+      font-size: 0.82rem;
+      color: var(--text-main);
+    }
+
+    /* Rodapé da ficha */
+    .sheet-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+    .pdf-page-note {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-sec);
+    }
+    .sheet-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .sheet-btn {
+      padding: 7px 12px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border);
+      background: var(--surface);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .sheet-btn:hover {
+      border-color: var(--navy);
+      background: var(--surface-alt);
+    }
+    .sheet-btn:disabled {
+      opacity: 0.4;
+      cursor: default;
+    }
+    .sheet-btn.primary {
+      background: var(--navy);
+      color: #FFFFFF;
+      border-color: var(--navy);
+    }
+
+    /* ==========================================================================
+       9. EXPLORADOR DA BNCC & MEUS PROJETOS
+       ========================================================================== */
+    .subview-section {
+      padding: 28px 0 60px;
+    }
+
+    .subview-header {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .bncc-controls {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 14px;
+      margin-top: 16px;
+    }
+
+    .bncc-input, .bncc-select {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: var(--radius-sm);
+      border: 1.5px solid var(--border);
+      background: var(--cream);
+      font-size: 0.9rem;
+    }
+
+    .bncc-en-disclaimer {
+      margin-top: 12px;
+      font-size: 0.82rem;
+      color: var(--text-sec);
+      font-style: italic;
+    }
+
+    .bncc-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      margin-bottom: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .bncc-card-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .bncc-code-tag {
+      background: var(--navy);
+      color: #FFFFFF;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 3px 10px;
+      border-radius: 8px;
+    }
+
+    .bncc-meta-tag {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--teal);
+      background: var(--surface-alt);
+      padding: 3px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .bncc-projects-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+      align-items: center;
+    }
+
+    .bncc-proj-link {
+      background: var(--cream);
+      border: 1.5px solid var(--border);
+      border-radius: 999px;
+      padding: 4px 12px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .bncc-proj-link:hover {
+      border-color: var(--navy);
+      background: #EEF1FA;
+    }
+
+    /* Meus Projetos */
+    .saved-year-group {
+      margin-bottom: 28px;
+    }
+    .saved-year-title {
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .saved-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 6px solid var(--seg-color, var(--navy));
+      border-radius: var(--radius-md);
+      padding: 14px 18px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      box-shadow: var(--shadow-sm);
+    }
+    .saved-item[draggable="true"] {
+      cursor: grab;
+    }
+    .saved-item.dragging {
+      opacity: 0.5;
+    }
+    .saved-item-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================================
+       10. RODAPÉ E TOAST DE FEEDBACK
+       ========================================================================== */
+    .site-footer {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 28px 0;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      height: 36px;
+      width: auto;
+    }
+
+    .footer-notes {
+      font-size: 0.82rem;
+      color: var(--text-sec);
+      max-width: 680px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--navy);
+      color: #FFFFFF;
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      box-shadow: var(--shadow-lg);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 100;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ==========================================================================
+       11. RESPONSIVIDADE (360PX A 1920PX)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .segment-tabs {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .catalog-layout {
+        grid-template-columns: 260px 1fr;
+        gap: 20px;
+      }
+      .sheet-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .segment-tabs {
+        grid-template-columns: 1fr 1fr;
+      }
+      .catalog-layout {
+        grid-template-columns: 1fr;
+      }
+      .mobile-filter-btn {
+        display: inline-flex;
+      }
+      .filters-panel {
+        position: fixed;
+        inset: 0 auto 0 0;
+        width: 86%;
+        max-width: 340px;
+        max-height: 100vh;
+        border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+        z-index: 70;
+        transform: translateX(-105%);
+        transition: transform 0.25s ease;
+      }
+      .filters-panel.mobile-open {
+        transform: translateX(0);
+      }
+      .mobile-filters-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(24, 29, 61, 0.5);
+        z-index: 65;
+      }
+      .mobile-filters-backdrop.open {
+        display: block;
+      }
+      .project-sheet {
+        max-width: 100%;
+      }
+      .sheet-header, .sheet-scroll {
+        padding: 18px;
+      }
+      .bncc-controls {
+        grid-template-columns: 1fr;
+      }
+      .projects-grid.list-view .project-card {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .projects-grid.list-view .card-footer {
+        border-left: none;
+        border-top: 1px solid var(--border);
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .segment-tabs {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+      }
+      .seg-tab { padding: 10px 12px; }
+      .seg-tab-sub { display: none; }
+      .seg-tab-title { font-size: 0.86rem; }
+      .header-inner {
+        padding: 12px 16px;
+      }
+      .container {
+        padding: 0 16px;
+      }
+    }
+
+    /* ==========================================================================
+       12. IMPRESSÃO EM A4 (FICHA ÚNICA OU TODAS AS FICHAS DE MEUS PROJETOS)
+       ========================================================================== */
+    .print-container {
+      display: none;
+    }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 14mm;
+      }
+
+      body {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .site-header,
+      .segment-nav-wrap,
+      .catalog-layout,
+      .subview-section,
+      .site-footer,
+      .drawer-backdrop,
+      .mobile-filters-backdrop,
+      .toast {
+        display: none !important;
+      }
+
+      .print-container {
+        display: block !important;
+      }
+
+      .print-sheet {
+        page-break-after: always;
+        break-after: page;
+        padding-bottom: 10mm;
+      }
+
+      .print-sheet:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      .print-sheet .sheet-header {
+        border-radius: 12px;
+        padding: 16px 20px;
+        margin-bottom: 14px;
+      }
+
+      .print-sheet .sheet-grid {
+        display: grid;
+        grid-template-columns: 1.45fr 1fr;
+        gap: 14px;
+      }
+
+      .print-sheet .sheet-section {
+        box-shadow: none;
+        padding: 12px 14px;
+        margin-bottom: 12px;
+        break-inside: avoid;
+      }
+
+      .print-sheet .teacher-box {
+        padding: 14px 16px;
+        break-inside: avoid;
+      }
+
+      .print-pdf-footer {
+        font-size: 0.78rem;
+        color: var(--text-sec);
+        margin-top: 8px;
+        text-align: right;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- ========================================================================
+       CABEÇALHO FIXO
+       ======================================================================== -->
+  <header class="site-header">
+    <div class="header-deco" id="header-deco"></div>
+    <div class="header-inner">
+      <div class="brand-group">
+        <span id="header-brand-logo"></span>
+        <div class="brand-titles">
+          <span class="brand-kicker" id="ui-kicker">Bernoulli Sistema de Ensino · 2027</span>
+          <h1 class="brand-title" id="ui-catalog-title">Sugestões de projetos por coleção · Dive.b</h1>
+        </div>
+      </div>
+
+      <div class="search-box" id="search-box-wrap">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input type="search" id="search-input" class="search-input" aria-label="Buscar projetos" />
+        <span class="search-kbd" aria-hidden="true">/</span>
+      </div>
+
+      <div class="header-actions">
+        <button type="button" class="nav-pill active" id="nav-catalog-btn" data-view="catalog"></button>
+        <button type="button" class="nav-pill" id="nav-bncc-btn" data-view="bncc"></button>
+        <button type="button" class="nav-pill" id="nav-saved-btn" data-view="saved">
+          <span id="nav-saved-label"></span>
+          <span class="badge-count" id="saved-count-badge">0</span>
+        </button>
+
+        <a href="" target="_blank" rel="noopener noreferrer" class="nav-pill new-tab-link" id="open-new-tab-btn">
+          Abrir em nova aba ↗
+        </a>
+
+        <div class="lang-switch" role="group" aria-label="Idioma / Language">
+          <button type="button" class="lang-btn active" data-lang="pt">PT-BR</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+       NAVEGAÇÃO POR SEGMENTO E ANOS (EXIBIDA NA VISÃO CATÁLOGO)
+       ======================================================================== -->
+  <nav class="segment-nav-wrap" id="segment-nav-wrap" aria-label="Segmentos e anos">
+    <div class="container">
+      <div class="segment-tabs" id="segment-tabs" role="tablist"></div>
+      <div class="years-bar" id="years-bar" hidden>
+        <div class="years-chips" id="years-chips"></div>
+        <div class="pending-banner" id="pending-banner" hidden></div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================================================
+       VISÃO 1: CATÁLOGO PRINCIPAL
+       ======================================================================== -->
+  <main class="container catalog-layout" id="view-catalog">
+    <div class="mobile-filters-backdrop" id="mobile-filters-backdrop"></div>
+    <aside class="filters-panel" id="filters-panel" aria-label="Filtros">
+      <div class="filters-header">
+        <h2 class="filters-title" id="ui-filters-title">Filtros</h2>
+        <button type="button" class="btn-clear-filters" id="btn-clear-filters">Limpar filtros</button>
+      </div>
+      <div id="filters-container"></div>
+    </aside>
+
+    <section aria-labelledby="results-count">
+      <div class="results-toolbar">
+        <div class="results-count" id="results-count" aria-live="polite"></div>
+
+        <div class="toolbar-right">
+          <button type="button" class="mobile-filter-btn" id="mobile-filter-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+            <span id="ui-mobile-filter-label">Filtros</span>
+          </button>
+
+          <label class="sr-only" for="sort-select" id="ui-sort-label">Ordenar por</label>
+          <select id="sort-select" class="sort-select"></select>
+
+          <div class="view-toggle" role="group" aria-label="Modo de visualização">
+            <button type="button" class="view-btn active" data-viewmode="cards" id="view-cards-btn"></button>
+            <button type="button" class="view-btn" data-viewmode="list" id="view-list-btn"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="active-chips-bar" id="active-chips-bar" hidden></div>
+      <div class="projects-grid" id="projects-container"></div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       VISÃO 2: EXPLORADOR DA BNCC
+       ======================================================================== -->
+  <main class="container subview-section" id="view-bncc" hidden>
+    <div class="subview-header">
+      <h2 id="ui-bncc-title">Explorador da BNCC</h2>
+      <p id="ui-bncc-subtitle" style="margin:6px 0 0; color:var(--text-sec);"></p>
+      <div class="bncc-controls">
+        <input type="search" id="bncc-search-input" class="bncc-input" />
+        <select id="bncc-stage-select" class="bncc-select"></select>
+        <select id="bncc-comp-select" class="bncc-select"></select>
+      </div>
+      <p class="bncc-en-disclaimer" id="bncc-en-disclaimer" hidden>
+        BNCC summaries in English are unofficial renderings of the Portuguese text.
+      </p>
+    </div>
+    <div id="bncc-results-count" class="results-count" style="margin-bottom:14px;" aria-live="polite"></div>
+    <div id="bncc-list"></div>
+  </main>
+
+  <!-- ========================================================================
+       VISÃO 3: MEUS PROJETOS SALVOS
+       ======================================================================== -->
+  <main class="container subview-section" id="view-saved" hidden>
+    <div class="subview-header" style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+      <div>
+        <h2 id="ui-saved-title">Meus Projetos</h2>
+        <p id="ui-saved-subtitle" style="margin:6px 0 0; color:var(--text-sec);"></p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <button type="button" class="sheet-btn" id="btn-export-csv">Exportar CSV</button>
+        <button type="button" class="btn-primary" id="btn-print-saved">Imprimir fichas (A4)</button>
+      </div>
+    </div>
+    <div id="saved-container"></div>
+  </main>
+
+  <!-- ========================================================================
+       GAVETA / MODAL DA FICHA COMPLETA DO PROJETO
+       ======================================================================== -->
+  <div class="drawer-backdrop" id="sheet-backdrop" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <article class="project-sheet" id="project-sheet"></article>
+  </div>
+
+  <!-- Contêiner exclusivo para impressão em A4 -->
+  <div class="print-container" id="print-container"></div>
+
+  <!-- ========================================================================
+       RODAPÉ
+       ======================================================================== -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span id="footer-brand-logo"></span>
+        <span id="footer-diveb-logo"></span>
+        <div>
+          <strong style="color:var(--navy); display:block;">Dive.b · Coleção <span id="footer-version">2027</span></strong>
+          <span style="font-size:0.8rem; color:var(--text-sec);" id="footer-generated"></span>
+        </div>
+      </div>
+      <p class="footer-notes" id="footer-notes"></p>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    /* ==========================================================================
+       SEÇÃO 1: VERIFICAÇÃO DE DADOS (EXCLUSIVO DE dados_dive_b.js) E ASSETS RELATIVOS
+       ========================================================================== */
+    const DATA = window.DIVEB_DATA;
+
+    const BRAND_ASSETS = {
+      diveb_color: ["assets/diveb_color.png"],
+      diveb_white: ["assets/diveb_white.png"],
+      bern_navy:   ["assets/bern_navy.png"],
+      bern_white:  ["assets/bern_white.png"],
+      g21_verde:   ["assets/g21_verde.png"],
+      g59_coral:   ["assets/g59_coral.png"],
+      g62_anil:    ["assets/g62_anil.png"],
+      g85_cream:   ["assets/g85_cream.png"],
+      g86_verde:   ["assets/g86_verde.png"],
+      g93_teal:    ["assets/g93_teal.png"],
+      sub01_white: ["assets/sub01_white.png"],
+      sub02_jpg:   ["assets/sub02.png"],
+      sub10_white: ["assets/sub10_white.png"]
+    };
+
+    const ASSET_FALLBACK_SVGS = {
+      diveb_color: `<svg class="brand-logo" viewBox="0 0 365 116" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="DiVE.b Bilingual">
+        <path d="M8 10H38C65 10 81 25 81 46C81 67 65 82 38 82H8C4.5 82 2 79.5 2 76V16C2 12.5 4.5 10 8 10Z" fill="#2B357F"/>
+        <circle cx="99" cy="21" r="11.5" fill="#2B357F"/>
+        <rect x="88.5" y="37" width="21" height="45" rx="10.5" fill="#2B357F"/>
+        <path d="M119 10H140C144 10 147 12.5 148.5 16L160 50L171.5 16C173 12.5 176 10 180 10H201C205.5 10 208.5 14.5 206.8 18.7L180 75.5C178 79.6 174 82 169.5 82H150.5C146 82 142 79.6 140 75.5L113.2 18.7C111.5 14.5 114.5 10 119 10Z" fill="#2B357F"/>
+        <path d="M214 16C214 12.5 216.5 10 220 10H262C266.5 10 270 13.5 270 18C270 22.5 266.5 26 262 26H235V38H258C262.5 38 266 41.5 266 46C266 50.5 262.5 54 258 54H235V66H262C266.5 66 270 69.5 270 74C270 78.5 266.5 82 262 82H220C216.5 82 214 79.5 214 76V16Z" fill="#2B357F"/>
+        <circle cx="283" cy="71" r="11" fill="#2B357F"/>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M302 8H320V35C325 30.5 331.5 28 339 28C354.5 28 364 39.5 364 55C364 70.5 354.5 82 339 82C330.5 82 323.5 78.5 319 73V82H302V8ZM333 44.5C326.5 44.5 321.5 49.2 321.5 55C321.5 60.8 326.5 65.5 333 65.5C339.5 65.5 344.5 60.8 344.5 55C344.5 49.2 339.5 44.5 333 44.5Z" fill="#73CC7D"/>
+        <text x="3" y="109" fill="#73CC7D" font-family="'Suspire', 'Nunito', system-ui, sans-serif" font-weight="800" font-size="24" letter-spacing="1.2">Bilingual</text>
+      </svg>`,
+      bern_navy: `<svg class="footer-logo" viewBox="0 0 220 44" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bernoulli">
+        <path d="M36 22C29 12 18 10 11 16C5 21 6 30 13 33C20 36 29 30 36 22ZM36 22C43 14 52 8 59 11C66 14 67 23 61 28C54 34 43 32 36 22Z" stroke="#2B357F" stroke-width="4.2" stroke-linecap="round"/>
+        <text x="74" y="31" fill="#2B357F" font-family="'Suspire', 'Nunito', system-ui, sans-serif" font-weight="900" font-size="25" letter-spacing="-0.3">Bernoulli</text>
+      </svg>`,
+      g21_verde: `<svg viewBox="0 0 120 120" fill="#73CC7D" xmlns="http://www.w3.org/2000/svg"><path d="M60 10C88 10 110 32 110 60C110 88 88 110 60 110C32 110 10 88 10 60C10 32 32 10 60 10Z"/></svg>`,
+      g59_coral: `<svg viewBox="0 0 120 120" fill="#F14A5B" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="50"/></svg>`,
+      g62_anil: `<svg viewBox="0 0 120 120" fill="#798ED0" xmlns="http://www.w3.org/2000/svg"><rect x="15" y="15" width="90" height="90" rx="36"/></svg>`,
+      g86_verde: `<svg viewBox="0 0 120 120" fill="#73CC7D" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="48"/></svg>`,
+      g93_teal: `<svg viewBox="0 0 120 120" fill="#2A6E81" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="60" rx="52" ry="42"/></svg>`,
+      sub01_white: `<svg class="teacher-sub-img" viewBox="0 0 120 80" fill="none" stroke="#FFFFF5" stroke-width="4" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="34" width="92" height="32" rx="16"/><path d="M44 34V22H72V34"/><circle cx="40" cy="50" r="5"/><circle cx="60" cy="50" r="5"/><circle cx="80" cy="50" r="5"/></svg>`,
+      sub02_jpg: `<svg viewBox="0 0 120 80" fill="none" stroke="#2B357F" stroke-width="4" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="34" width="92" height="32" rx="16"/><path d="M48 34V18H68V34"/></svg>`,
+      sub10_white: `<svg class="teacher-sub-img" viewBox="0 0 120 80" fill="none" stroke="#FFFFF5" stroke-width="4" xmlns="http://www.w3.org/2000/svg"><rect x="14" y="34" width="92" height="32" rx="16"/><path d="M42 34V20H74V34"/><circle cx="46" cy="50" r="6"/><circle cx="70" cy="50" r="6"/></svg>`
+    };
+
+    function escapeHtml(str) {
+      return String(str == null ? "" : str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    window.handleAssetFallback = function(imgEl, key) {
+      const list = BRAND_ASSETS[key] || [];
+      const nextIdx = Number(imgEl.dataset.tryIdx || 0) + 1;
+      if (nextIdx < list.length) {
+        imgEl.dataset.tryIdx = String(nextIdx);
+        imgEl.src = list[nextIdx];
+      } else {
+        const span = document.createElement("span");
+        span.innerHTML = ASSET_FALLBACK_SVGS[key] || "";
+        if (imgEl.parentNode) imgEl.parentNode.replaceChild(span.firstElementChild || span, imgEl);
+      }
+    };
+
+    function renderBrandAsset(key, alt, className) {
+      const list = BRAND_ASSETS[key] || [];
+      if (!list.length) return ASSET_FALLBACK_SVGS[key] || "";
+      return `<img src="${list[0]}" alt="${escapeHtml(alt)}" class="${className}" data-try-idx="0" onerror="window.handleAssetFallback(this, '${key}')" />`;
+    }
+
+    function renderOrganicGraphic(key, className) {
+      const list = BRAND_ASSETS[key] || [];
+      if (!list.length) return ASSET_FALLBACK_SVGS[key] || "";
+      return `<img src="${list[0]}" alt="" aria-hidden="true" class="${className}" data-try-idx="0" onerror="window.handleAssetFallback(this, '${key}')" />`;
+    }
+
+    function updateNewTabLinks() {
+      const currentUrl = window.location.href;
+      const headerNewTab = document.getElementById("open-new-tab-btn");
+      if (headerNewTab) headerNewTab.href = currentUrl;
+    }
+
+    // Se window.DIVEB_DATA não existir ao carregar, exibe a mensagem solicitada
+    if (!DATA || !Array.isArray(DATA.projects)) {
+      document.getElementById("header-deco").innerHTML = renderOrganicGraphic("sub02_jpg", "header-deco");
+      document.getElementById("header-brand-logo").innerHTML = renderBrandAsset("diveb_color", "Dive.b", "brand-logo");
+      document.getElementById("footer-brand-logo").innerHTML = renderBrandAsset("bern_navy", "Bernoulli Sistema de Ensino", "footer-logo");
+      document.getElementById("footer-diveb-logo").innerHTML = renderBrandAsset("diveb_color", "Dive.b", "footer-logo");
+      document.getElementById("segment-nav-wrap").hidden = true;
+      document.getElementById("search-box-wrap").style.visibility = "hidden";
+      updateNewTabLinks();
+
+      const mainEl = document.getElementById("view-catalog");
+      mainEl.style.display = "block";
+      mainEl.innerHTML = `
+        <div class="data-error-box" role="alert">
+          <h2>Não foi possível carregar os dados (dados_dive_b.js)</h2>
+          <p>Verifique se o arquivo <code>dados_dive_b.js</code> está publicado na mesma pasta que este <code>index.html</code>.</p>
+        </div>
+      `;
+    } else {
+      initCatalogApp(DATA);
+    }
+
+    function initCatalogApp(DATA) {
+      const UI = {
+        pt: {
+          kicker: "Bernoulli Sistema de Ensino · 2027",
+          catalogTitle: "Sugestões de projetos por coleção · Dive.b",
+          searchPlaceholder: "Buscar por nome, vocabulário, tema, BNCC...",
+          navCatalog: "Catálogo",
+          navBncc: "Explorador BNCC",
+          navSaved: "Meus Projetos",
+          openNewTab: "Abrir em nova aba ↗",
+          allSegments: "Todos os segmentos",
+          allSegmentsSub: "Coleção completa",
+          allYears: "Todos os anos",
+          projectsWord: "projetos",
+          projectWord: "projeto",
+          filtersTitle: "Filtros",
+          clearFilters: "Limpar filtros",
+          filterDuration: "Duração",
+          filterThemes: "Temas transversais",
+          filterComponents: "Campos / Componentes",
+          filterSkills21: "Competências do séc. XXI",
+          filterSource: "Fonte dos passos",
+          filterLang: "Habilidades linguísticas",
+          hasRWLabel: "Possui leitura e escrita",
+          sourceManual: "Com base no Manual do Professor",
+          sourceBook: "Conferir com o Manual",
+          resultsCount: (shown, total) => `${shown} de ${total} ${total === 1 ? "projeto" : "projetos"}`,
+          sortLabel: "Ordenar por",
+          sortCollection: "Ordem da coleção",
+          sortAlpha: "Ordem alfabética (A–Z)",
+          sortDuration: "Duração",
+          viewCards: "Cards",
+          viewList: "Lista",
+          finalProductLabel: "Produto final",
+          viewProject: "Ver ficha",
+          addSaved: "Salvar projeto",
+          removeSaved: "Salvo",
+          emptyTitle: "Nenhum projeto encontrado",
+          emptyDesc: "Tente remover algum filtro ou buscar por outro termo.",
+          sheetAbout: "Sobre o projeto",
+          sheetSteps: "Passo a passo",
+          sheetPlanning: "Planejamento",
+          sheetMaterials: "Materiais necessários",
+          sheetAssessment: "Avaliação",
+          sheetThemes: "Temas transversais",
+          sheetSkills21: "Competências do século XXI",
+          sheetBncc: "Alinhamento à BNCC",
+          sheetBnccCode: "Código",
+          sheetBnccComp: "Componente / Campo",
+          sheetBnccDesc: "Habilidade / Objetivo",
+          sheetLang: "Habilidades linguísticas em inglês",
+          langListening: "Escuta (Listening)",
+          langSpeaking: "Fala (Speaking)",
+          langRW: "Leitura e Escrita (Reading & Writing)",
+          langTarget: "Vocabulário-alvo",
+          sheetTeacher: "Para o professor",
+          pdfPage: (pg) => `Página no PDF original: ${pg}`,
+          prevProject: "Anterior",
+          nextProject: "Próximo",
+          copyLink: "Copiar link",
+          copyText: "Copiar texto",
+          printSheet: "Imprimir ficha",
+          copiedLinkMsg: "Link do projeto copiado!",
+          copiedTextMsg: "Texto da ficha copiado!",
+          copyFallbackLabel: "Copie manualmente (Ctrl+C / Cmd+C):",
+          bnccTitle: "Explorador da BNCC",
+          bnccSubtitle: "Consulte códigos, habilidades e os projetos vinculados em toda a coleção.",
+          bnccSearchPlaceholder: "Filtrar por código (ex.: EI02ET02) ou descrição...",
+          bnccAllStages: "Todas as etapas",
+          bnccAllComps: "Todos os componentes / campos",
+          bnccCount: (n) => `${n} ${n === 1 ? "habilidade encontrada" : "habilidades encontradas"}`,
+          bnccProjectsLabel: "Projetos vinculados:",
+          savedTitle: "Meus Projetos",
+          savedSubtitle: "Organize sua seleção por ano, reordene como preferir e exporte ou imprima.",
+          exportCsv: "Exportar CSV",
+          printAllSaved: "Imprimir fichas (A4)",
+          savedEmptyTitle: "Sua lista está vazia",
+          savedEmptyDesc: "Clique na estrela ☆ em qualquer projeto do catálogo para salvá-lo aqui.",
+          moveUp: "Mover para cima",
+          moveDown: "Mover para baixo"
+        },
+        en: {
+          kicker: "Bernoulli Education System · 2027",
+          catalogTitle: "Project suggestions by collection · Dive.b",
+          searchPlaceholder: "Search by name, vocabulary, theme, BNCC...",
+          navCatalog: "Catalog",
+          navBncc: "BNCC Explorer",
+          navSaved: "My Projects",
+          openNewTab: "Open in new tab ↗",
+          allSegments: "All segments",
+          allSegmentsSub: "Full collection",
+          allYears: "All grades",
+          projectsWord: "projects",
+          projectWord: "project",
+          filtersTitle: "Filters",
+          clearFilters: "Clear filters",
+          filterDuration: "Duration",
+          filterThemes: "Cross-curricular themes",
+          filterComponents: "Fields / Components",
+          filterSkills21: "21st-century skills",
+          filterSource: "Steps source",
+          filterLang: "Language skills",
+          hasRWLabel: "Includes reading & writing",
+          sourceManual: "Based on the Teacher's Manual",
+          sourceBook: "Check against the Teacher's Manual",
+          resultsCount: (shown, total) => `${shown} of ${total} ${total === 1 ? "project" : "projects"}`,
+          sortLabel: "Sort by",
+          sortCollection: "Collection order",
+          sortAlpha: "Alphabetical (A–Z)",
+          sortDuration: "Duration",
+          viewCards: "Cards",
+          viewList: "List",
+          finalProductLabel: "Final product",
+          viewProject: "Open sheet",
+          addSaved: "Save project",
+          removeSaved: "Saved",
+          emptyTitle: "No projects found",
+          emptyDesc: "Try removing a filter or searching for another term.",
+          sheetAbout: "About the project",
+          sheetSteps: "Step by step",
+          sheetPlanning: "Planning",
+          sheetMaterials: "Materials needed",
+          sheetAssessment: "Assessment",
+          sheetThemes: "Cross-curricular themes",
+          sheetSkills21: "21st-century skills",
+          sheetBncc: "BNCC Alignment",
+          sheetBnccCode: "Code",
+          sheetBnccComp: "Component / Field",
+          sheetBnccDesc: "Skill / Objective",
+          sheetLang: "English language skills",
+          langListening: "Listening",
+          langSpeaking: "Speaking",
+          langRW: "Reading & Writing",
+          langTarget: "Target language",
+          sheetTeacher: "For the teacher",
+          pdfPage: (pg) => `Original PDF page: ${pg}`,
+          prevProject: "Previous",
+          nextProject: "Next",
+          copyLink: "Copy link",
+          copyText: "Copy text",
+          printSheet: "Print sheet",
+          copiedLinkMsg: "Project link copied!",
+          copiedTextMsg: "Project sheet text copied!",
+          copyFallbackLabel: "Copy manually (Ctrl+C / Cmd+C):",
+          bnccTitle: "BNCC Explorer",
+          bnccSubtitle: "Browse codes, skills, and linked projects across the collection.",
+          bnccSearchPlaceholder: "Filter by code (e.g. EI02ET02) or description...",
+          bnccAllStages: "All stages",
+          bnccAllComps: "All components / fields",
+          bnccCount: (n) => `${n} ${n === 1 ? "skill found" : "skills found"}`,
+          bnccProjectsLabel: "Linked projects:",
+          savedTitle: "My Projects",
+          savedSubtitle: "Organize your selection by grade, reorder as needed, and export or print.",
+          exportCsv: "Export CSV",
+          printAllSaved: "Print sheets (A4)",
+          savedEmptyTitle: "Your list is empty",
+          savedEmptyDesc: "Click the ☆ star on any catalog project to save it here.",
+          moveUp: "Move up",
+          moveDown: "Move down"
+        }
+      };
+
+      const SEG_MAP = Object.fromEntries((DATA.segments || []).map(s => [s.id, s]));
+      const YEAR_MAP = Object.fromEntries((DATA.years || []).map(y => [y.id, y]));
+      const PROJ_MAP = Object.fromEntries((DATA.projects || []).map(p => [p.id, p]));
+
+      // Fallback em memória caso o iframe (Google Sites) bloqueie o acesso ao localStorage
+      let memorySavedIds = [];
+      let memoryLang = "pt";
+
+      function loadSavedIds() {
+        try {
+          const raw = window.localStorage.getItem("diveb_saved_2027");
+          if (raw) {
+            memorySavedIds = JSON.parse(raw);
+          }
+          return [...memorySavedIds];
+        } catch {
+          return [...memorySavedIds];
+        }
+      }
+
+      function saveSavedIds(ids) {
+        memorySavedIds = [...ids];
+        try {
+          window.localStorage.setItem("diveb_saved_2027", JSON.stringify(ids));
+        } catch {}
+      }
+
+      function loadSavedLang() {
+        try {
+          const val = window.localStorage.getItem("diveb_lang_2027");
+          if (val === "pt" || val === "en") memoryLang = val;
+          return memoryLang;
+        } catch {
+          return memoryLang;
+        }
+      }
+
+      function saveSavedLang(lang) {
+        memoryLang = lang;
+        try {
+          window.localStorage.setItem("diveb_lang_2027", lang);
+        } catch {}
+      }
+
+      async function copyTextWithIframeFallback(textToCopy, successMessage) {
+        let copied = false;
+        try {
+          if (navigator.clipboard && typeof navigator.clipboard.writeText === "function") {
+            await navigator.clipboard.writeText(textToCopy);
+            copied = true;
+          }
+        } catch {
+          copied = false;
+        }
+
+        if (copied) {
+          showToast(successMessage);
+          return;
+        }
+
+        // Alternativa caso o iframe bloqueie navigator.clipboard: exibe campo selecionado na ficha
+        const bar = document.getElementById("copy-fallback-bar");
+        const input = document.getElementById("copy-fallback-input");
+        if (bar && input) {
+          bar.hidden = false;
+          input.value = textToCopy;
+          input.focus();
+          input.select();
+          try {
+            if (document.execCommand("copy")) {
+              showToast(successMessage);
+            }
+          } catch {}
+        }
+      }
+
+      const state = {
+        lang: loadSavedLang(),
+        view: "catalog",
+        seg: "all",
+        year: "all",
+        q: "",
+        durations: [],
+        themes: [],
+        components: [],
+        skills21: [],
+        sources: [],
+        hasRW: false,
+        sort: "collection",
+        viewMode: "cards",
+        projectId: null,
+        bnccQuery: "",
+        bnccStage: "all",
+        bnccComp: "all",
+        savedIds: loadSavedIds()
+      };
+
+      const DUR_LABELS = {
+        pt: { "1": "1 aula", "2-3": "2 a 3 aulas", "4+": "4 aulas ou mais", "long": "Com acompanhamento em semanas" },
+        en: { "1": "1 lesson", "2-3": "2 to 3 lessons", "4+": "4 lessons or more", "long": "With follow-up over weeks" }
+      };
+      const DUR_ORDER = ["1", "2-3", "4+", "long"];
+      function durBucket(p) {
+        const d = String((p.duration && p.duration.pt) || "").toLowerCase();
+        if (/semana|m[eê]s|registros|momentos|cuidados|observa/.test(d)) return "long";
+        const nums = (d.match(/\d+/g) || []).map(Number);
+        const n = nums.length ? nums[0] : 1;
+        if (n === 1 && !/1 a 2/.test(d)) return "1";
+        if (n <= 3) return "2-3";
+        return "4+";
+      }
+      function durNumber(p) {
+        const m = String((p.duration && p.duration.pt) || "").match(/\d+/);
+        return m ? Number(m[0]) : 1;
+      }
+
+      // Mapeia valores de filtro entre PT e EN (temas, componentes, competências)
+      function translateVals(arr, field, from, to) {
+        const map = {};
+        (DATA.projects || []).forEach(p => {
+          const a = (p[field] && p[field][from]) || [], b = (p[field] && p[field][to]) || [];
+          a.forEach((v, i) => { if (b[i]) map[v] = b[i]; });
+        });
+        return arr.map(v => map[v] || v);
+      }
+
+      function normalizeText(str) {
+        return String(str || "")
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+      }
+
+      function formatRichText(str, highlightQuery = "") {
+        let html = escapeHtml(str || "").replace(/\*([^*]+)\*/g, "<em>$1</em>");
+        if (highlightQuery && highlightQuery.trim().length >= 2) {
+          const escapedQ = highlightQuery.trim().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+          const re = new RegExp(`(${escapedQ})(?![^<]*>)`, "gi");
+          html = html.replace(re, "<mark>$1</mark>");
+        }
+        return html;
+      }
+
+      function showToast(msg) {
+        const el = document.getElementById("toast");
+        if (!el) return;
+        el.textContent = msg;
+        el.classList.add("show");
+        clearTimeout(el._timer);
+        el._timer = setTimeout(() => el.classList.remove("show"), 2400);
+      }
+
+      function parseHashToState() {
+        const raw = window.location.hash.replace(/^#/, "");
+        if (!raw) return;
+        const params = new URLSearchParams(raw);
+        if (params.get("lang") === "en" || params.get("lang") === "pt") state.lang = params.get("lang");
+        if (["catalog", "bncc", "saved"].includes(params.get("view"))) state.view = params.get("view");
+        if (params.has("seg")) state.seg = params.get("seg") || "all";
+        if (params.has("year")) state.year = params.get("year") || "all";
+        if (params.has("q")) state.q = params.get("q") || "";
+        if (params.has("p")) state.projectId = params.get("p") || null;
+        if (params.has("sort")) state.sort = params.get("sort") || "collection";
+        if (params.has("mode")) state.viewMode = params.get("mode") || "cards";
+        const list = (k) => params.get(k) ? params.get(k).split("|").filter(Boolean) : [];
+        state.durations = list("dur");
+        state.themes = list("theme");
+        state.components = list("comp");
+        state.skills21 = list("skill");
+        state.sources = list("src");
+        state.hasRW = params.get("rw") === "1";
+        if (params.has("bncc")) state.bnccQuery = params.get("bncc") || "";
+        if (!params.has("p")) state.projectId = null;
+      }
+
+      function syncStateToHash(replace = false) {
+        const params = new URLSearchParams();
+        if (state.lang !== "pt") params.set("lang", state.lang);
+        if (state.view !== "catalog") params.set("view", state.view);
+        if (state.seg !== "all") params.set("seg", state.seg);
+        if (state.year !== "all") params.set("year", state.year);
+        if (state.q) params.set("q", state.q);
+        if (state.sort !== "collection") params.set("sort", state.sort);
+        if (state.viewMode !== "cards") params.set("mode", state.viewMode);
+        if (state.durations.length) params.set("dur", state.durations.join("|"));
+        if (state.themes.length) params.set("theme", state.themes.join("|"));
+        if (state.components.length) params.set("comp", state.components.join("|"));
+        if (state.skills21.length) params.set("skill", state.skills21.join("|"));
+        if (state.sources.length) params.set("src", state.sources.join("|"));
+        if (state.hasRW) params.set("rw", "1");
+        if (state.view === "bncc" && state.bnccQuery) params.set("bncc", state.bnccQuery);
+        if (state.projectId) params.set("p", state.projectId);
+        const nextHash = params.toString() ? `#${params.toString()}` : "";
+        try {
+          if (replace) {
+            history.replaceState(null, "", nextHash || window.location.pathname + window.location.search);
+          } else {
+            window.location.hash = nextHash;
+          }
+        } catch {}
+        updateNewTabLinks();
+      }
+
+      function matchesFilters(p, ignoreFacet = null) {
+        const lang = state.lang;
+        if (state.seg !== "all" && p.segment !== state.seg) return false;
+        if (state.year !== "all" && p.year !== state.year) return false;
+        if (ignoreFacet !== "durations" && state.durations.length > 0) {
+          if (!state.durations.includes(durBucket(p))) return false;
+        }
+        if (ignoreFacet !== "themes" && state.themes.length > 0) {
+          const th = (p.themes && p.themes[lang]) || [];
+          if (!state.themes.some(t => th.includes(t))) return false;
+        }
+        if (ignoreFacet !== "components" && state.components.length > 0) {
+          const cp = (p.components && p.components[lang]) || [];
+          if (!state.components.some(c => cp.includes(c))) return false;
+        }
+        if (ignoreFacet !== "skills21" && state.skills21.length > 0) {
+          const sk = (p.skills21 && p.skills21[lang]) || [];
+          if (!state.skills21.some(s => sk.includes(s))) return false;
+        }
+        if (ignoreFacet !== "sources" && state.sources.length > 0) {
+          if (!state.sources.includes(p.steps_source)) return false;
+        }
+        if (ignoreFacet !== "hasRW" && state.hasRW) {
+          if (!p.language || !p.language.reading_writing || !p.language.reading_writing[lang]) return false;
+        }
+        if (state.q.trim()) {
+          const q = normalizeText(state.q.trim());
+          const hay = normalizeText([
+            p.name,
+            p.subtitle_pt,
+            p.description && p.description.pt, p.description && p.description.en,
+            ((p.steps && p.steps[lang]) || []).join(" "),
+            p.teacher_tip && p.teacher_tip[lang],
+            ((p.skills21 && p.skills21[lang]) || []).join(" "),
+            p.materials && p.materials[lang],
+            p.final_product && p.final_product[lang],
+            p.language && p.language.target_language && p.language.target_language[lang],
+            (p.bncc || []).join(" "),
+            ((p.themes && p.themes[lang]) || []).join(" "),
+            ((p.components && p.components[lang]) || []).join(" ")
+          ].join(" "));
+          if (!hay.includes(q)) return false;
+        }
+        return true;
+      }
+
+      function getFilteredProjects() {
+        const list = (DATA.projects || []).filter(p => matchesFilters(p));
+        if (state.sort === "alpha") {
+          return [...list].sort((a, b) => a.name.localeCompare(b.name, state.lang));
+        }
+        if (state.sort === "duration") {
+          return [...list].sort((a, b) => (DUR_ORDER.indexOf(durBucket(a)) - DUR_ORDER.indexOf(durBucket(b))) || (durNumber(a) - durNumber(b)) || (a.n - b.n));
+        }
+        return [...list].sort((a, b) => a.n - b.n);
+      }
+
+      function renderSegmentAndYearNav() {
+        const t = UI[state.lang];
+        const allProjects = DATA.projects || [];
+        const tabsEl = document.getElementById("segment-tabs");
+        const allActive = state.seg === "all" ? "active" : "";
+
+        let html = `
+          <button type="button" class="seg-tab ${allActive}" data-seg="all" role="tab" aria-selected="${state.seg === "all"}">
+            <div class="seg-tab-top">
+              <span class="seg-dot" style="background:var(--navy)"></span>
+              <span class="seg-count">${allProjects.length}</span>
+            </div>
+            <span class="seg-tab-title">${escapeHtml(t.allSegments)}</span>
+            <span class="seg-tab-sub">${escapeHtml(t.allSegmentsSub)}</span>
+          </button>
+        `;
+
+        (DATA.segments || []).forEach(seg => {
+          const count = allProjects.filter(p => p.segment === seg.id).length;
+          const active = state.seg === seg.id ? "active" : "";
+          html += `
+            <button type="button" class="seg-tab ${active}" data-seg="${seg.id}" role="tab" aria-selected="${state.seg === seg.id}">
+              <div class="seg-tab-top">
+                <span class="seg-dot" style="background:${seg.color}"></span>
+                <span class="seg-count">${count}</span>
+              </div>
+              <span class="seg-tab-title">${escapeHtml(seg.title[state.lang])}</span>
+              <span class="seg-tab-sub">${escapeHtml(seg.subtitle[state.lang])}</span>
+            </button>
+          `;
+        });
+        tabsEl.innerHTML = html;
+
+        const yearsBar = document.getElementById("years-bar");
+        const yearsChips = document.getElementById("years-chips");
+        const pendingBanner = document.getElementById("pending-banner");
+
+        if (state.seg === "all") {
+          yearsBar.hidden = true;
+          return;
+        }
+
+        yearsBar.hidden = false;
+        const segYears = (DATA.years || []).filter(y => y.segment === state.seg);
+        const segTotal = allProjects.filter(p => p.segment === state.seg).length;
+
+        let chipsHtml = `
+          <button type="button" class="year-chip ${state.year === "all" ? "active" : ""}" data-year="all">
+            <span>${escapeHtml(t.allYears)}</span>
+            <span class="year-chip-count">${segTotal}</span>
+          </button>
+        `;
+
+        segYears.forEach(y => {
+          const cnt = allProjects.filter(p => p.year === y.id).length;
+          const age = y.age && y.age[state.lang] ? ` (${y.age[state.lang]})` : "";
+          chipsHtml += `
+            <button type="button" class="year-chip ${state.year === y.id ? "active" : ""}" data-year="${y.id}">
+              ${y.pending ? '<span class="pending-dot" aria-hidden="true"></span>' : ""}
+              <span>${escapeHtml(y.label[state.lang] + age)}</span>
+              <span class="year-chip-count">${cnt}</span>
+            </button>
+          `;
+        });
+        yearsChips.innerHTML = chipsHtml;
+
+        const pendList = (state.year !== "all" ? [YEAR_MAP[state.year]] : segYears).filter(y => y && y.pending && y.pending[state.lang]);
+        if (pendList.length) {
+          pendingBanner.hidden = false;
+          pendingBanner.textContent = "⏳ " + pendList.map(y => y.pending[state.lang]).join(" ");
+        } else {
+          pendingBanner.hidden = true;
+        }
+      }
+
+      function renderFiltersSidebar() {
+        const t = UI[state.lang];
+        const lang = state.lang;
+        document.getElementById("ui-filters-title").textContent = t.filtersTitle;
+        const clearBtn = document.getElementById("btn-clear-filters");
+        clearBtn.textContent = t.clearFilters;
+
+        const hasAnyFilter = state.seg !== "all" || state.year !== "all" || state.q.trim() !== "" ||
+          state.durations.length > 0 || state.themes.length > 0 || state.components.length > 0 ||
+          state.skills21.length > 0 || state.sources.length > 0 || state.hasRW;
+        clearBtn.disabled = !hasAnyFilter;
+
+        const allProjs = DATA.projects || [];
+        const collectFacet = (facetName, extractor) => {
+          const valuesSet = new Set();
+          allProjs.forEach(p => extractor(p).forEach(v => { if (v) valuesSet.add(v); }));
+          const baseMatches = allProjs.filter(p => matchesFilters(p, facetName));
+          return [...valuesSet].sort((a, b) => a.localeCompare(b, lang)).map(val => ({
+            val,
+            count: baseMatches.filter(p => extractor(p).includes(val)).length
+          }));
+        };
+
+        const durBase = allProjs.filter(p => matchesFilters(p, "durations"));
+        const durItems = DUR_ORDER.map(k => ({ val: k, label: DUR_LABELS[lang][k], count: durBase.filter(p => durBucket(p) === k).length }));
+        const themeItems = collectFacet("themes", p => (p.themes && p.themes[lang]) || []);
+        const compItems = collectFacet("components", p => (p.components && p.components[lang]) || []);
+        const skillItems = collectFacet("skills21", p => (p.skills21 && p.skills21[lang]) || []);
+
+        const sourceBase = allProjs.filter(p => matchesFilters(p, "sources"));
+        const sourceItems = [
+          { val: "teachers_manual", label: t.sourceManual, count: sourceBase.filter(p => p.steps_source === "teachers_manual").length },
+          { val: "book_description", label: t.sourceBook, count: sourceBase.filter(p => p.steps_source === "book_description").length }
+        ];
+
+        const rwBase = allProjs.filter(p => matchesFilters(p, "hasRW"));
+        const rwCount = rwBase.filter(p => p.language && p.language.reading_writing && p.language.reading_writing[lang]).length;
+
+        const renderGroup = (title, facetKey, items, selectedArr) => {
+          if (!items.length) return "";
+          return `
+            <div class="filter-group">
+              <div class="filter-group-title">${escapeHtml(title)}</div>
+              <div class="filter-list">
+                ${items.map(it => {
+                  const checked = selectedArr.includes(it.val);
+                  const zeroCls = !checked && it.count === 0 ? "zero" : "";
+                  return `
+                    <label class="filter-option ${zeroCls}">
+                      <span class="filter-option-left">
+                        <input type="checkbox" data-facet="${facetKey}" value="${escapeHtml(it.val)}" ${checked ? "checked" : ""} />
+                        <span>${escapeHtml(it.label || it.val)}</span>
+                      </span>
+                      <span class="filter-facet-count">${it.count}</span>
+                    </label>
+                  `;
+                }).join("")}
+              </div>
+            </div>
+          `;
+        };
+
+        document.getElementById("filters-container").innerHTML =
+          renderGroup(t.filterDuration, "durations", durItems, state.durations) +
+          renderGroup(t.filterThemes, "themes", themeItems, state.themes) +
+          renderGroup(t.filterComponents, "components", compItems, state.components) +
+          renderGroup(t.filterSkills21, "skills21", skillItems, state.skills21) +
+          renderGroup(t.filterSource, "sources", sourceItems, state.sources) +
+          `
+            <div class="filter-group">
+              <div class="filter-group-title">${escapeHtml(t.filterLang)}</div>
+              <label class="filter-option ${!state.hasRW && rwCount === 0 ? "zero" : ""}">
+                <span class="filter-option-left">
+                  <input type="checkbox" data-facet="hasRW" value="1" ${state.hasRW ? "checked" : ""} />
+                  <span>${escapeHtml(t.hasRWLabel)}</span>
+                </span>
+                <span class="filter-facet-count">${rwCount}</span>
+              </label>
+            </div>
+          `;
+      }
+
+      function renderActiveChips() {
+        const t = UI[state.lang];
+        const bar = document.getElementById("active-chips-bar");
+        const chips = [];
+        if (state.seg !== "all" && SEG_MAP[state.seg]) {
+          chips.push({ type: "seg", val: state.seg, label: SEG_MAP[state.seg].title[state.lang] });
+        }
+        if (state.year !== "all" && YEAR_MAP[state.year]) {
+          chips.push({ type: "year", val: state.year, label: YEAR_MAP[state.year].label[state.lang] });
+        }
+        if (state.q.trim()) {
+          chips.push({ type: "q", val: state.q, label: `"${state.q.trim()}"` });
+        }
+        state.durations.forEach(v => chips.push({ type: "durations", val: v, label: DUR_LABELS[state.lang][v] }));
+        state.themes.forEach(v => chips.push({ type: "themes", val: v, label: v }));
+        state.components.forEach(v => chips.push({ type: "components", val: v, label: v }));
+        state.skills21.forEach(v => chips.push({ type: "skills21", val: v, label: v }));
+        state.sources.forEach(v => chips.push({ type: "sources", val: v, label: v === "teachers_manual" ? t.sourceManual : t.sourceBook }));
+        if (state.hasRW) chips.push({ type: "hasRW", val: "1", label: t.hasRWLabel });
+
+        if (!chips.length) {
+          bar.hidden = true;
+          bar.innerHTML = "";
+          return;
+        }
+        bar.hidden = false;
+        bar.innerHTML = chips.map(c => `
+          <button type="button" class="active-chip" data-remove-type="${c.type}" data-remove-val="${escapeHtml(c.val)}">
+            <span>${escapeHtml(c.label)}</span>
+            <span aria-hidden="true">×</span>
+          </button>
+        `).join("");
+      }
+
+      function renderCatalogResults() {
+        const t = UI[state.lang];
+        const lang = state.lang;
+        const filtered = getFilteredProjects();
+        const total = (DATA.projects || []).length;
+
+        document.getElementById("results-count").textContent = t.resultsCount(filtered.length, total);
+        document.getElementById("ui-mobile-filter-label").textContent = t.filtersTitle;
+        document.getElementById("ui-sort-label").textContent = t.sortLabel;
+
+        const sortSelect = document.getElementById("sort-select");
+        sortSelect.innerHTML = `
+          <option value="collection" ${state.sort === "collection" ? "selected" : ""}>${escapeHtml(t.sortCollection)}</option>
+          <option value="alpha" ${state.sort === "alpha" ? "selected" : ""}>${escapeHtml(t.sortAlpha)}</option>
+          <option value="duration" ${state.sort === "duration" ? "selected" : ""}>${escapeHtml(t.sortDuration)}</option>
+        `;
+
+        const cardsBtn = document.getElementById("view-cards-btn");
+        const listBtn = document.getElementById("view-list-btn");
+        cardsBtn.textContent = t.viewCards;
+        listBtn.textContent = t.viewList;
+        cardsBtn.classList.toggle("active", state.viewMode === "cards");
+        listBtn.classList.toggle("active", state.viewMode === "list");
+
+        renderActiveChips();
+
+        const container = document.getElementById("projects-container");
+        container.classList.toggle("list-view", state.viewMode === "list");
+
+        if (!filtered.length) {
+          container.innerHTML = `
+            <div class="empty-state" style="grid-column: 1 / -1;">
+              <h3>${escapeHtml(t.emptyTitle)}</h3>
+              <p>${escapeHtml(t.emptyDesc)}</p>
+              <button type="button" class="btn-primary" id="empty-clear-btn">${escapeHtml(t.clearFilters)}</button>
+            </div>
+          `;
+          return;
+        }
+
+        const q = state.q.trim();
+        container.innerHTML = filtered.map(p => {
+          const seg = SEG_MAP[p.segment] || { color: "#2B357F", title: { pt: "", en: "" } };
+          const yr = YEAR_MAP[p.year] || { label: { pt: "", en: "" } };
+          const isStarred = state.savedIds.includes(p.id);
+          const pillTextColor = p.segment === "efai" ? "#22284F" : "#FFFFFF";
+          const themes = (p.themes && p.themes[lang]) || [];
+          const bnccTags = (p.bncc || []).slice(0, 3);
+
+          return `
+            <article class="project-card" style="--seg-color:${seg.color}">
+              <div class="card-body">
+                <div class="card-top">
+                  <div class="card-badges">
+                    <span class="seg-pill" style="background:${seg.color}; color:${pillTextColor}">#${p.n} · ${escapeHtml(seg.title[lang])}</span>
+                    <span class="year-pill">${escapeHtml(yr.label[lang])}</span>
+                  </div>
+                  <button type="button" class="star-btn ${isStarred ? "starred" : ""}" data-star-id="${p.id}" aria-label="${escapeHtml(isStarred ? t.removeSaved : t.addSaved)}" title="${escapeHtml(isStarred ? t.removeSaved : t.addSaved)}">
+                    ${isStarred ? "★" : "☆"}
+                  </button>
+                </div>
+
+                <div class="card-main-info">
+                  <button type="button" class="card-title-btn" data-open-id="${p.id}">${formatRichText(p.name, q)}</button>
+                  ${lang === "pt" && p.subtitle_pt ? `<div class="card-subtitle">${formatRichText(p.subtitle_pt, q)}</div>` : ""}
+                </div>
+
+                <p class="card-desc">${formatRichText((p.description && p.description[lang]) || "", q)}</p>
+
+                <div class="card-meta">
+                  <div><strong>${escapeHtml(t.finalProductLabel)}:</strong> ${formatRichText((p.final_product && p.final_product[lang]) || "", q)}</div>
+                  <div>${formatRichText((p.location && p.location[lang]) || "")} · ${formatRichText((p.duration && p.duration[lang]) || "")}</div>
+                </div>
+
+                <div class="card-tags">
+                  ${themes.map(th => `<span class="tag-chip">${escapeHtml(th)}</span>`).join("")}
+                  ${bnccTags.map(code => `<span class="tag-chip">${escapeHtml(code)}</span>`).join("")}
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <span class="source-badge ${p.steps_source === "teachers_manual" ? "manual" : "book"}">
+                  ${escapeHtml(p.steps_source === "teachers_manual" ? t.sourceManual : t.sourceBook)}
+                </span>
+                <button type="button" class="card-open-link" data-open-id="${p.id}">${escapeHtml(t.viewProject)} →</button>
+              </div>
+            </article>
+          `;
+        }).join("");
+      }
+
+      function buildProjectSheetHtml(p, isPrintMode = false) {
+        const t = UI[state.lang];
+        const lang = state.lang;
+        const seg = SEG_MAP[p.segment] || { color: "#2B357F", title: { pt: "", en: "" } };
+        const year = YEAR_MAP[p.year] || { label: { pt: "", en: "" }, pending: null };
+        const isStarred = state.savedIds.includes(p.id);
+        const headerTextColor = p.segment === "efai" ? "#22284F" : "#FFFFFF";
+        const organicKey = { ei: "g59_coral", efai: "g21_verde", efaf: "g62_anil", em: "g93_teal" }[p.segment] || "g86_verde";
+
+        const orderedList = getFilteredProjects();
+        const idx = orderedList.findIndex(item => item.id === p.id);
+        const prevProj = idx > 0 ? orderedList[idx - 1] : null;
+        const nextProj = idx !== -1 && idx < orderedList.length - 1 ? orderedList[idx + 1] : null;
+
+        const steps = (p.steps && p.steps[lang]) || [];
+        const comps = (p.components && p.components[lang]) || [];
+        const themes = (p.themes && p.themes[lang]) || [];
+        const skills21 = (p.skills21 && p.skills21[lang]) || [];
+        const bnccCodes = p.bncc || [];
+
+        return `
+          <header class="sheet-header" style="background:${seg.color}; color:${headerTextColor};">
+            ${renderOrganicGraphic(organicKey, "sheet-deco")}
+            <div class="sheet-header-top">
+              <span class="sheet-kicker">#${p.n} · ${escapeHtml(seg.title[lang])} · ${escapeHtml(year.label[lang])}</span>
+              ${!isPrintMode ? `<button type="button" class="sheet-close-btn" id="sheet-close-btn" aria-label="${lang === "pt" ? "Fechar" : "Close"}">×</button>` : ""}
+            </div>
+            <h2 class="sheet-title" id="sheet-title">${formatRichText(p.name)}</h2>
+            ${lang === "pt" && p.subtitle_pt ? `<div class="sheet-subtitle">${formatRichText(p.subtitle_pt)}</div>` : ""}
+            <div class="sheet-meta-bar">
+              <span>📍 ${formatRichText((p.location && p.location[lang]) || "")}</span>
+              <span>⏱ ${formatRichText((p.duration && p.duration[lang]) || "")}</span>
+              <span>🎯 ${escapeHtml(t.finalProductLabel)}: ${formatRichText((p.final_product && p.final_product[lang]) || "")}</span>
+            </div>
+            ${comps.length ? `
+              <div class="sheet-components-bar">
+                ${comps.map(c => `<span class="sheet-comp-pill">${escapeHtml(c)}</span>`).join("")}
+              </div>
+            ` : ""}
+          </header>
+
+          <div class="sheet-scroll" style="--seg-color:${seg.color}">
+            <div class="sheet-grid">
+              <div>
+                <section class="sheet-section">
+                  <h3 class="sheet-section-title">${escapeHtml(t.sheetAbout)}</h3>
+                  <p style="margin:0;">${formatRichText((p.description && p.description[lang]) || "")}</p>
+                </section>
+
+                <section class="sheet-section">
+                  <h3 class="sheet-section-title">
+                    <span>${escapeHtml(t.sheetSteps)}</span>
+                    <span class="source-badge ${p.steps_source === "teachers_manual" ? "manual" : "book"}">
+                      ${escapeHtml(p.steps_source === "teachers_manual" ? t.sourceManual : t.sourceBook)}
+                    </span>
+                  </h3>
+                  <ol class="steps-timeline">
+                    ${steps.map((st, i) => `
+                      <li class="step-item">
+                        <span class="step-num" style="background:${seg.color}; color:${headerTextColor};">${i + 1}</span>
+                        <div>${formatRichText(st)}</div>
+                      </li>
+                    `).join("")}
+                  </ol>
+                </section>
+              </div>
+
+              <div>
+                <section class="sheet-section">
+                  <h3 class="sheet-section-title">${escapeHtml(t.sheetPlanning)}</h3>
+                  <div class="plan-item">
+                    <span class="plan-label">${escapeHtml(t.sheetMaterials)}</span>
+                    <p class="plan-value">${formatRichText((p.materials && p.materials[lang]) || "")}</p>
+                  </div>
+                  <div class="plan-item">
+                    <span class="plan-label">${escapeHtml(t.sheetAssessment)}</span>
+                    <p class="plan-value">${formatRichText((p.assessment && p.assessment[lang]) || "")}</p>
+                  </div>
+                  <div class="plan-item">
+                    <span class="plan-label">${escapeHtml(t.sheetThemes)}</span>
+                    ${themes.length ? `<div class="pills-wrap">${themes.map(th => `<span class="skill-pill">${escapeHtml(th)}</span>`).join("")}</div>` : `<p class="plan-value">${lang === "pt" ? "Não se aplica" : "Not applicable"}</p>`}
+                  </div>
+                  ${skills21.length ? `
+                    <div class="plan-item">
+                      <span class="plan-label">${escapeHtml(t.sheetSkills21)}</span>
+                      <div class="pills-wrap">${skills21.map(sk => `<span class="skill-pill">${escapeHtml(sk)}</span>`).join("")}</div>
+                    </div>
+                  ` : ""}
+                </section>
+              </div>
+            </div>
+
+            <section class="sheet-section">
+              <h3 class="sheet-section-title">${escapeHtml(t.sheetLang)}</h3>
+              <div class="lang-boxes">
+                ${p.language && p.language.listening && p.language.listening[lang] ? `
+                  <div class="lang-box">
+                    <div class="lang-box-title">${escapeHtml(t.langListening)}</div>
+                    <p>${formatRichText(p.language.listening[lang])}</p>
+                  </div>
+                ` : ""}
+                ${p.language && p.language.speaking && p.language.speaking[lang] ? `
+                  <div class="lang-box">
+                    <div class="lang-box-title">${escapeHtml(t.langSpeaking)}</div>
+                    <p>${formatRichText(p.language.speaking[lang])}</p>
+                  </div>
+                ` : ""}
+                <div class="lang-box">
+                  <div class="lang-box-title">${escapeHtml(t.langRW)}</div>
+                  <p>${p.language && p.language.reading_writing && p.language.reading_writing[lang] ? formatRichText(p.language.reading_writing[lang]) : (lang === "pt" ? "Não se aplica" : "Not applicable")}</p>
+                </div>
+                ${p.language && p.language.target_language && p.language.target_language[lang] ? `
+                  <div class="lang-box">
+                    <div class="lang-box-title">${escapeHtml(t.langTarget)}</div>
+                    <p>${formatRichText(p.language.target_language[lang])}</p>
+                  </div>
+                ` : ""}
+              </div>
+            </section>
+
+            <section class="sheet-section">
+              <h3 class="sheet-section-title">${escapeHtml(t.sheetBncc)}</h3>
+              <table class="bncc-table">
+                <thead>
+                  <tr>
+                    <th>${escapeHtml(t.sheetBnccCode)}</th>
+                    <th>${escapeHtml(t.sheetBnccComp)}</th>
+                    <th>${escapeHtml(t.sheetBnccDesc)}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${bnccCodes.map(code => {
+                    const info = (DATA.bncc && DATA.bncc[code]) || {};
+                    return `
+                      <tr>
+                        <td><button type="button" class="bncc-code-btn" data-bncc-code="${escapeHtml(code)}">${escapeHtml(code)}</button></td>
+                        <td>${escapeHtml((info.component && info.component[lang]) || "")}</td>
+                        <td>${formatRichText((info.text && info.text[lang]) || "")}</td>
+                      </tr>
+                    `;
+                  }).join("")}
+                </tbody>
+              </table>
+            </section>
+
+            <div class="teacher-box">
+              ${renderOrganicGraphic(p.segment === "ei" || p.segment === "efaf" ? "sub01_white" : "sub10_white", "teacher-sub-img")}
+              <div>
+                <h4>${escapeHtml(t.sheetTeacher)}</h4>
+                <p>${formatRichText((p.teacher_tip && p.teacher_tip[state.lang]) || "")}</p>
+                ${year.pending ? `<p class="teacher-pending-note">⏳ ${escapeHtml(year.pending[state.lang])}</p>` : ""}
+              </div>
+            </div>
+
+            ${isPrintMode ? `<div class="print-pdf-footer">${escapeHtml(t.pdfPage((p.pdf_page && p.pdf_page[state.lang]) || ""))}</div>` : ""}
+          </div>
+
+          ${!isPrintMode ? `
+            <div class="copy-fallback-bar" id="copy-fallback-bar" hidden>
+              <label for="copy-fallback-input">${escapeHtml(t.copyFallbackLabel)}</label>
+              <input type="text" id="copy-fallback-input" class="copy-fallback-input" readonly />
+            </div>
+            <footer class="sheet-footer">
+              <span class="pdf-page-note">${escapeHtml(t.pdfPage((p.pdf_page && p.pdf_page[state.lang]) || ""))}</span>
+              <div class="sheet-actions">
+                <button type="button" class="sheet-btn" id="sheet-prev-btn" ${prevProj ? `data-nav-id="${prevProj.id}"` : "disabled"}>← ${escapeHtml(t.prevProject)}</button>
+                <button type="button" class="sheet-btn" id="sheet-next-btn" ${nextProj ? `data-nav-id="${nextProj.id}"` : "disabled"}>${escapeHtml(t.nextProject)} →</button>
+                <button type="button" class="sheet-btn" id="sheet-copy-link">${escapeHtml(t.copyLink)}</button>
+                <button type="button" class="sheet-btn" id="sheet-copy-text">${escapeHtml(t.copyText)}</button>
+                <button type="button" class="sheet-btn" id="sheet-print-btn">${escapeHtml(t.printSheet)}</button>
+                <button type="button" class="sheet-btn primary" data-star-id="${p.id}">
+                  ${isStarred ? "★ " + escapeHtml(t.removeSaved) : "☆ " + escapeHtml(t.addSaved)}
+                </button>
+              </div>
+            </footer>
+          ` : ""}
+        `;
+      }
+
+      function openProjectSheet(projectId) {
+        const p = PROJ_MAP[projectId];
+        if (!p) return;
+        const backdrop = document.getElementById("sheet-backdrop");
+        const sheet = document.getElementById("project-sheet");
+        sheet.innerHTML = buildProjectSheetHtml(p, false);
+        backdrop.classList.add("open");
+        document.body.style.overflow = "hidden";
+        const closeBtn = document.getElementById("sheet-close-btn");
+        if (closeBtn) closeBtn.focus();
+      }
+
+      function closeProjectSheetDom() {
+        const backdrop = document.getElementById("sheet-backdrop");
+        backdrop.classList.remove("open");
+        document.body.style.overflow = "";
+      }
+
+      function formatProjectPlainText(p) {
+        const t = UI[state.lang];
+        const seg = SEG_MAP[p.segment];
+        const year = YEAR_MAP[p.year];
+        const clean = (s) => String(s || "").replace(/\*/g, "");
+        const lines = [
+          `${p.name}${state.lang === "pt" && p.subtitle_pt ? " (" + p.subtitle_pt + ")" : ""}`,
+          `${seg ? seg.title[state.lang] : ""} · ${year ? year.label[state.lang] : ""}`,
+          `${clean(p.location[state.lang])} | ${clean(p.duration[state.lang])}`,
+          "",
+          `${t.sheetAbout.toUpperCase()}:`,
+          clean(p.description[state.lang]),
+          "",
+          `${t.sheetSteps.toUpperCase()}:`,
+          ...p.steps[state.lang].map((st, idx) => `${idx + 1}. ${clean(st)}`),
+          "",
+          `${t.sheetMaterials}: ${clean(p.materials[state.lang])}`,
+          `${t.finalProductLabel}: ${clean(p.final_product[state.lang])}`,
+          `${t.sheetAssessment}: ${clean(p.assessment[state.lang])}`,
+          `BNCC: ${p.bncc.join(", ")}`,
+          `${t.langTarget}: ${clean(p.language.target_language[state.lang])}`,
+          `${t.sheetTeacher}: ${clean(p.teacher_tip[state.lang])}`
+        ];
+        return lines.join("\n");
+      }
+
+      function renderBnccExplorer() {
+        const t = UI[state.lang];
+        document.getElementById("ui-bncc-title").textContent = t.bnccTitle;
+        document.getElementById("ui-bncc-subtitle").textContent = t.bnccSubtitle;
+        document.getElementById("bncc-en-disclaimer").hidden = state.lang !== "en";
+
+        const searchEl = document.getElementById("bncc-search-input");
+        searchEl.placeholder = t.bnccSearchPlaceholder;
+        if (searchEl.value !== state.bnccQuery) searchEl.value = state.bnccQuery;
+
+        const entries = Object.entries(DATA.bncc || {});
+        const stages = [...new Set(entries.map(([, v]) => v.stage && v.stage[state.lang]).filter(Boolean))];
+        const comps = [...new Set(entries.map(([, v]) => v.component && v.component[state.lang]).filter(Boolean))].sort((a, b) => a.localeCompare(b, state.lang));
+
+        const stageSelect = document.getElementById("bncc-stage-select");
+        stageSelect.innerHTML = `<option value="all">${escapeHtml(t.bnccAllStages)}</option>` +
+          stages.map(s => `<option value="${escapeHtml(s)}" ${state.bnccStage === s ? "selected" : ""}>${escapeHtml(s)}</option>`).join("");
+
+        const compSelect = document.getElementById("bncc-comp-select");
+        compSelect.innerHTML = `<option value="all">${escapeHtml(t.bnccAllComps)}</option>` +
+          comps.map(c => `<option value="${escapeHtml(c)}" ${state.bnccComp === c ? "selected" : ""}>${escapeHtml(c)}</option>`).join("");
+
+        const q = normalizeText(state.bnccQuery.trim());
+        const filtered = entries.filter(([code, info]) => {
+          const stg = (info.stage && info.stage[state.lang]) || "";
+          const cmp = (info.component && info.component[state.lang]) || "";
+          if (state.bnccStage !== "all" && stg !== state.bnccStage) return false;
+          if (state.bnccComp !== "all" && cmp !== state.bnccComp) return false;
+          if (q) {
+            const hay = normalizeText(`${code} ${stg} ${cmp} ${(info.text && info.text[state.lang]) || ""}`);
+            if (!hay.includes(q)) return false;
+          }
+          return true;
+        });
+
+        document.getElementById("bncc-results-count").textContent = t.bnccCount(filtered.length);
+
+        const listEl = document.getElementById("bncc-list");
+        listEl.innerHTML = filtered.map(([code, info]) => {
+          const stg = (info.stage && info.stage[state.lang]) || "";
+          const cmp = (info.component && info.component[state.lang]) || "";
+          const txt = (info.text && info.text[state.lang]) || "";
+          const linkedProjects = (info.projects || []).map(pid => PROJ_MAP[pid]).filter(Boolean);
+
+          return `
+            <div class="bncc-card">
+              <div class="bncc-card-top">
+                <span class="bncc-code-tag">${escapeHtml(code)}</span>
+                ${stg ? `<span class="bncc-meta-tag">${escapeHtml(stg)}</span>` : ""}
+                ${cmp ? `<span class="bncc-meta-tag">${escapeHtml(cmp)}</span>` : ""}
+              </div>
+              <p style="margin:0; font-size:0.93rem;">${formatRichText(txt, state.bnccQuery.trim())}</p>
+              <div class="bncc-projects-links">
+                <strong style="font-size:0.8rem; color:var(--text-sec);">${escapeHtml(t.bnccProjectsLabel)}</strong>
+                ${linkedProjects.map(proj => `
+                  <button type="button" class="bncc-proj-link" data-open-id="${proj.id}">
+                    #${proj.n} · ${escapeHtml(proj.name)}
+                  </button>
+                `).join("")}
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      function renderSavedProjects() {
+        const t = UI[state.lang];
+        document.getElementById("ui-saved-title").textContent = t.savedTitle;
+        document.getElementById("ui-saved-subtitle").textContent = t.savedSubtitle;
+        document.getElementById("btn-export-csv").textContent = t.exportCsv;
+        document.getElementById("btn-print-saved").textContent = t.printAllSaved;
+
+        const validIds = state.savedIds.filter(id => PROJ_MAP[id]);
+        document.getElementById("btn-export-csv").disabled = validIds.length === 0;
+        document.getElementById("btn-print-saved").disabled = validIds.length === 0;
+
+        const container = document.getElementById("saved-container");
+        if (validIds.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <h3>${escapeHtml(t.savedEmptyTitle)}</h3>
+              <p>${escapeHtml(t.savedEmptyDesc)}</p>
+            </div>
+          `;
+          return;
+        }
+
+        const groups = (DATA.years || []).map(y => {
+          const items = validIds.map(id => PROJ_MAP[id]).filter(p => p && p.year === y.id);
+          return { year: y, items };
+        }).filter(g => g.items.length > 0);
+
+        container.innerHTML = groups.map(g => {
+          const seg = SEG_MAP[g.year.segment] || { color: "#2B357F", title: { pt: "", en: "" } };
+          const ageStr = g.year.age && g.year.age[state.lang] ? ` · ${g.year.age[state.lang]}` : "";
+          return `
+            <section class="saved-year-group">
+              <h3 class="saved-year-title">
+                <span class="seg-dot" style="background:${seg.color}"></span>
+                <span>${escapeHtml(seg.title[state.lang])} — ${escapeHtml(g.year.label[state.lang] + ageStr)}</span>
+              </h3>
+              <div class="saved-list" data-year-group="${g.year.id}">
+                ${g.items.map((p, idx) => `
+                  <div class="saved-item" draggable="true" data-saved-id="${p.id}" style="--seg-color:${seg.color}">
+                    <div style="min-width:0;">
+                      <div style="font-size:0.78rem; color:var(--text-sec); font-weight:700;">
+                        #${p.n} · ${formatRichText((p.duration && p.duration[state.lang]) || "")}
+                      </div>
+                      <button type="button" class="card-title-btn" data-open-id="${p.id}">${formatRichText(p.name)}</button>
+                      <div style="font-size:0.84rem; color:var(--text-sec); margin-top:2px;">
+                        <strong>${escapeHtml(t.finalProductLabel)}:</strong> ${formatRichText((p.final_product && p.final_product[state.lang]) || "")}
+                      </div>
+                    </div>
+                    <div class="saved-item-actions">
+                      <button type="button" class="sheet-btn" data-move="up" data-id="${p.id}" ${idx === 0 ? "disabled" : ""} aria-label="${escapeHtml(t.moveUp)}" title="${escapeHtml(t.moveUp)}">↑</button>
+                      <button type="button" class="sheet-btn" data-move="down" data-id="${p.id}" ${idx === g.items.length - 1 ? "disabled" : ""} aria-label="${escapeHtml(t.moveDown)}" title="${escapeHtml(t.moveDown)}">↓</button>
+                      <button type="button" class="sheet-btn" data-open-id="${p.id}">${escapeHtml(t.viewProject)}</button>
+                      <button type="button" class="sheet-btn" data-star-id="${p.id}" aria-label="${escapeHtml(t.removeSaved)}" title="${escapeHtml(t.removeSaved)}">✕</button>
+                    </div>
+                  </div>
+                `).join("")}
+              </div>
+            </section>
+          `;
+        }).join("");
+      }
+
+      function exportSavedToCsv() {
+        const lang = state.lang;
+        const clean = (s) => String(s || "").replace(/\*/g, "").replace(/"/g, '""');
+        const headers = lang === "pt"
+          ? ["Numero", "Segmento", "Ano", "Nome", "Subtitulo_PT", "Localizacao", "Duracao", "Produto_Final", "Componentes", "Temas", "BNCC", "Pagina_PDF"]
+          : ["Number", "Segment", "Grade", "Name", "Location", "Duration", "Final_Product", "Components", "Themes", "BNCC", "PDF_Page"];
+
+        const rows = [headers.map(h => `"${h}"`).join(";")];
+        state.savedIds.map(id => PROJ_MAP[id]).filter(Boolean).forEach(p => {
+          const seg = SEG_MAP[p.segment];
+          const yr = YEAR_MAP[p.year];
+          const cols = lang === "pt" ? [
+            p.n,
+            seg ? seg.title.pt : "",
+            yr ? yr.label.pt : "",
+            p.name,
+            p.subtitle_pt || "",
+            p.location.pt,
+            p.duration.pt,
+            p.final_product.pt,
+            (p.components.pt || []).join(", "),
+            (p.themes.pt || []).join(", "),
+            (p.bncc || []).join(", "),
+            p.pdf_page.pt
+          ] : [
+            p.n,
+            seg ? seg.title.en : "",
+            yr ? yr.label.en : "",
+            p.name,
+            p.location.en,
+            p.duration.en,
+            p.final_product.en,
+            (p.components.en || []).join(", "),
+            (p.themes.en || []).join(", "),
+            (p.bncc || []).join(", "),
+            p.pdf_page.en
+          ];
+          rows.push(cols.map(c => `"${clean(c)}"`).join(";"));
+        });
+
+        const blob = new Blob(["\uFEFF" + rows.join("\n")], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `diveb_meus_projetos_${lang}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      }
+
+      function printProjects(projectsList) {
+        const printContainer = document.getElementById("print-container");
+        printContainer.innerHTML = projectsList.map(p => `
+          <div class="print-sheet">
+            ${buildProjectSheetHtml(p, true)}
+          </div>
+        `).join("");
+        const imgs = [...printContainer.querySelectorAll("img")].filter(i => !i.complete);
+        Promise.all(imgs.map(i => new Promise(res => { i.onload = i.onerror = res; }))).then(() => {
+          try { window.print(); } catch { showToast(state.lang === "pt" ? "Use 'Abrir em nova aba' para imprimir." : "Use 'Open in new tab' to print."); }
+        });
+      }
+
+      window.addEventListener("afterprint", () => { document.getElementById("print-container").innerHTML = ""; });
+
+      function toggleSavedProject(id) {
+        const idx = state.savedIds.indexOf(id);
+        if (idx === -1) {
+          state.savedIds.push(id);
+        } else {
+          state.savedIds.splice(idx, 1);
+        }
+        saveSavedIds(state.savedIds);
+        renderAll();
+      }
+
+      function moveSavedItemInYear(id, direction) {
+        const proj = PROJ_MAP[id];
+        if (!proj) return;
+        const sameYearIds = state.savedIds.filter(sid => PROJ_MAP[sid] && PROJ_MAP[sid].year === proj.year);
+        const pos = sameYearIds.indexOf(id);
+        const swapPos = direction === "up" ? pos - 1 : pos + 1;
+        if (swapPos < 0 || swapPos >= sameYearIds.length) return;
+
+        const targetId = sameYearIds[swapPos];
+        const globalA = state.savedIds.indexOf(id);
+        const globalB = state.savedIds.indexOf(targetId);
+        [state.savedIds[globalA], state.savedIds[globalB]] = [state.savedIds[globalB], state.savedIds[globalA]];
+        saveSavedIds(state.savedIds);
+        renderSavedProjects();
+      }
+
+      function setupEvents() {
+        document.getElementById("header-deco").innerHTML = renderOrganicGraphic("sub02_jpg", "header-deco");
+        document.getElementById("header-brand-logo").innerHTML = renderBrandAsset("diveb_color", "Dive.b", "brand-logo");
+        document.getElementById("footer-brand-logo").innerHTML = renderBrandAsset("bern_navy", "Bernoulli Sistema de Ensino", "footer-logo");
+        document.getElementById("footer-diveb-logo").innerHTML = renderBrandAsset("diveb_color", "Dive.b", "footer-logo");
+
+        document.querySelectorAll(".lang-btn").forEach(btn => {
+          btn.addEventListener("click", () => {
+            const from = state.lang, to = btn.dataset.lang;
+            if (from === to) return;
+            state.themes = translateVals(state.themes, "themes", from, to);
+            state.components = translateVals(state.components, "components", from, to);
+            state.skills21 = translateVals(state.skills21, "skills21", from, to);
+            state.lang = to;
+            saveSavedLang(state.lang);
+            state.bnccStage = "all";
+            state.bnccComp = "all";
+            syncStateToHash();
+            renderAll();
+          });
+        });
+
+        document.querySelectorAll(".nav-pill[data-view]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            state.view = btn.dataset.view;
+            state.projectId = null;
+            syncStateToHash();
+            renderAll();
+          });
+        });
+
+        let searchTimer = null;
+        document.getElementById("search-input").addEventListener("input", (e) => {
+          clearTimeout(searchTimer);
+          searchTimer = setTimeout(() => {
+            state.q = e.target.value;
+            syncStateToHash(true);
+            renderFiltersSidebar();
+            renderCatalogResults();
+          }, 150);
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "/" && !["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement.tagName)) {
+            e.preventDefault();
+            if (state.view !== "catalog") {
+              state.view = "catalog";
+              syncStateToHash();
+              renderAll();
+            }
+            document.getElementById("search-input").focus();
+          }
+          if (e.key === "Escape") {
+            if (state.projectId) {
+              state.projectId = null;
+              syncStateToHash();
+              renderAll();
+            }
+            document.getElementById("filters-panel").classList.remove("mobile-open");
+            document.getElementById("mobile-filters-backdrop").classList.remove("open");
+          }
+        });
+
+        document.getElementById("segment-tabs").addEventListener("click", (e) => {
+          const btn = e.target.closest(".seg-tab");
+          if (!btn) return;
+          state.seg = btn.dataset.seg;
+          state.year = "all";
+          syncStateToHash();
+          renderAll();
+        });
+
+        document.getElementById("years-chips").addEventListener("click", (e) => {
+          const btn = e.target.closest(".year-chip");
+          if (!btn) return;
+          state.year = btn.dataset.year;
+          syncStateToHash();
+          renderAll();
+        });
+
+        document.getElementById("filters-container").addEventListener("change", (e) => {
+          const input = e.target;
+          if (!input.matches("input[type='checkbox']")) return;
+          const facet = input.dataset.facet;
+          if (facet === "hasRW") {
+            state.hasRW = input.checked;
+          } else {
+            const val = input.value;
+            if (input.checked) {
+              if (!state[facet].includes(val)) state[facet].push(val);
+            } else {
+              state[facet] = state[facet].filter(v => v !== val);
+            }
+          }
+          syncStateToHash();
+          renderFiltersSidebar();
+          renderCatalogResults();
+        });
+
+        const clearAllFilters = () => {
+          state.seg = "all";
+          state.year = "all";
+          state.q = "";
+          state.durations = [];
+          state.themes = [];
+          state.components = [];
+          state.skills21 = [];
+          state.sources = [];
+          state.hasRW = false;
+          syncStateToHash();
+          renderAll();
+        };
+        document.getElementById("btn-clear-filters").addEventListener("click", clearAllFilters);
+
+        document.getElementById("sort-select").addEventListener("change", (e) => {
+          state.sort = e.target.value;
+          syncStateToHash();
+          renderCatalogResults();
+        });
+
+        document.getElementById("view-cards-btn").addEventListener("click", () => {
+          state.viewMode = "cards";
+          syncStateToHash();
+          renderCatalogResults();
+        });
+
+        document.getElementById("view-list-btn").addEventListener("click", () => {
+          state.viewMode = "list";
+          syncStateToHash();
+          renderCatalogResults();
+        });
+
+        document.getElementById("active-chips-bar").addEventListener("click", (e) => {
+          const btn = e.target.closest(".active-chip");
+          if (!btn) return;
+          const type = btn.dataset.removeType;
+          const val = btn.dataset.removeVal;
+          if (type === "seg") { state.seg = "all"; state.year = "all"; }
+          else if (type === "year") { state.year = "all"; }
+          else if (type === "q") { state.q = ""; }
+          else if (type === "hasRW") { state.hasRW = false; }
+          else if (Array.isArray(state[type])) {
+            state[type] = state[type].filter(v => v !== val);
+          }
+          syncStateToHash();
+          renderAll();
+        });
+
+        document.getElementById("mobile-filter-btn").addEventListener("click", () => {
+          document.getElementById("filters-panel").classList.add("mobile-open");
+          document.getElementById("mobile-filters-backdrop").classList.add("open");
+        });
+        document.getElementById("mobile-filters-backdrop").addEventListener("click", () => {
+          document.getElementById("filters-panel").classList.remove("mobile-open");
+          document.getElementById("mobile-filters-backdrop").classList.remove("open");
+        });
+
+        document.body.addEventListener("click", (e) => {
+          if (e.target.closest("#empty-clear-btn")) {
+            clearAllFilters();
+            return;
+          }
+
+          const starBtn = e.target.closest("[data-star-id]");
+          if (starBtn) {
+            e.stopPropagation();
+            toggleSavedProject(starBtn.dataset.starId);
+            return;
+          }
+
+          const openBtn = e.target.closest("[data-open-id]");
+          if (openBtn) {
+            state.projectId = openBtn.dataset.openId;
+            syncStateToHash();
+            openProjectSheet(state.projectId);
+            return;
+          }
+
+          if (e.target.closest("#sheet-close-btn") || e.target === document.getElementById("sheet-backdrop")) {
+            state.projectId = null;
+            syncStateToHash();
+            closeProjectSheetDom();
+            return;
+          }
+
+          const navBtn = e.target.closest("[data-nav-id]");
+          if (navBtn) {
+            state.projectId = navBtn.dataset.navId;
+            syncStateToHash();
+            openProjectSheet(state.projectId);
+            return;
+          }
+
+          const bnccBtn = e.target.closest("[data-bncc-code]");
+          if (bnccBtn) {
+            const code = bnccBtn.dataset.bnccCode;
+            state.projectId = null;
+            state.view = "bncc";
+            state.bnccQuery = code;
+            state.bnccStage = "all";
+            state.bnccComp = "all";
+            syncStateToHash();
+            renderAll();
+            return;
+          }
+
+          if (e.target.closest("#sheet-copy-link")) {
+            copyTextWithIframeFallback(window.location.href, UI[state.lang].copiedLinkMsg);
+            return;
+          }
+
+          if (e.target.closest("#sheet-copy-text") && state.projectId) {
+            const p = PROJ_MAP[state.projectId];
+            if (p) {
+              copyTextWithIframeFallback(formatProjectPlainText(p), UI[state.lang].copiedTextMsg);
+            }
+            return;
+          }
+
+          if (e.target.closest("#sheet-print-btn") && state.projectId) {
+            const p = PROJ_MAP[state.projectId];
+            if (p) printProjects([p]);
+            return;
+          }
+
+          const moveBtn = e.target.closest("[data-move]");
+          if (moveBtn) {
+            moveSavedItemInYear(moveBtn.dataset.id, moveBtn.dataset.move);
+            return;
+          }
+        });
+
+        document.getElementById("bncc-search-input").addEventListener("input", (e) => {
+          state.bnccQuery = e.target.value;
+          syncStateToHash(true);
+          renderBnccExplorer();
+        });
+        document.getElementById("bncc-stage-select").addEventListener("change", (e) => {
+          state.bnccStage = e.target.value;
+          syncStateToHash();
+          renderBnccExplorer();
+        });
+        document.getElementById("bncc-comp-select").addEventListener("change", (e) => {
+          state.bnccComp = e.target.value;
+          syncStateToHash();
+          renderBnccExplorer();
+        });
+
+        document.getElementById("btn-export-csv").addEventListener("click", exportSavedToCsv);
+        document.getElementById("btn-print-saved").addEventListener("click", () => {
+          const list = state.savedIds.map(id => PROJ_MAP[id]).filter(Boolean);
+          if (list.length > 0) printProjects(list);
+        });
+
+        let draggedId = null;
+        document.getElementById("saved-container").addEventListener("dragstart", (e) => {
+          const item = e.target.closest(".saved-item");
+          if (!item) return;
+          draggedId = item.dataset.savedId;
+          item.classList.add("dragging");
+        });
+        document.getElementById("saved-container").addEventListener("dragend", (e) => {
+          const item = e.target.closest(".saved-item");
+          if (item) item.classList.remove("dragging");
+          draggedId = null;
+        });
+        document.getElementById("saved-container").addEventListener("dragover", (e) => {
+          e.preventDefault();
+        });
+        document.getElementById("saved-container").addEventListener("drop", (e) => {
+          e.preventDefault();
+          const targetItem = e.target.closest(".saved-item");
+          if (!targetItem || !draggedId || targetItem.dataset.savedId === draggedId) return;
+          const targetId = targetItem.dataset.savedId;
+          const fromIdx = state.savedIds.indexOf(draggedId);
+          const toIdx = state.savedIds.indexOf(targetId);
+          if (fromIdx !== -1 && toIdx !== -1) {
+            state.savedIds.splice(fromIdx, 1);
+            state.savedIds.splice(toIdx, 0, draggedId);
+            saveSavedIds(state.savedIds);
+            renderSavedProjects();
+          }
+        });
+
+        window.addEventListener("hashchange", () => {
+          parseHashToState();
+          renderAll();
+        });
+      }
+
+      function renderAll() {
+        const t = UI[state.lang];
+        document.documentElement.lang = state.lang === "pt" ? "pt-BR" : "en";
+        document.getElementById("ui-kicker").textContent = t.kicker;
+        document.getElementById("ui-catalog-title").textContent = t.catalogTitle;
+
+        const searchInput = document.getElementById("search-input");
+        searchInput.placeholder = t.searchPlaceholder;
+        if (searchInput.value !== state.q) searchInput.value = state.q;
+
+        document.getElementById("nav-catalog-btn").textContent = t.navCatalog;
+        document.getElementById("nav-bncc-btn").textContent = t.navBncc;
+        document.getElementById("nav-saved-label").textContent = t.navSaved;
+        document.getElementById("saved-count-badge").textContent = String(state.savedIds.filter(id => PROJ_MAP[id]).length);
+
+        const newTabBtn = document.getElementById("open-new-tab-btn");
+        if (newTabBtn) {
+          newTabBtn.textContent = t.openNewTab;
+          newTabBtn.href = window.location.href;
+        }
+
+        document.querySelectorAll(".nav-pill[data-view]").forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.view === state.view);
+        });
+        document.querySelectorAll(".lang-btn").forEach(btn => {
+          btn.classList.toggle("active", btn.dataset.lang === state.lang);
+        });
+
+        document.getElementById("search-box-wrap").style.visibility = state.view === "catalog" ? "visible" : "hidden";
+        document.getElementById("segment-nav-wrap").hidden = state.view !== "catalog";
+        document.getElementById("view-catalog").hidden = state.view !== "catalog";
+        document.getElementById("view-bncc").hidden = state.view !== "bncc";
+        document.getElementById("view-saved").hidden = state.view !== "saved";
+
+        if (DATA.meta) {
+          if (DATA.meta.version) document.getElementById("footer-version").textContent = DATA.meta.version;
+          if (DATA.meta.generated) document.getElementById("footer-generated").textContent = DATA.meta.generated;
+          if (DATA.meta.notes && DATA.meta.notes[state.lang]) document.getElementById("footer-notes").textContent = DATA.meta.notes[state.lang];
+        }
+
+        if (state.view === "catalog") {
+          renderSegmentAndYearNav();
+          renderFiltersSidebar();
+          renderCatalogResults();
+        } else if (state.view === "bncc") {
+          renderBnccExplorer();
+        } else if (state.view === "saved") {
+          renderSavedProjects();
+        }
+
+        if (state.projectId && PROJ_MAP[state.projectId]) {
+          openProjectSheet(state.projectId);
+        } else {
+          closeProjectSheetDom();
+        }
+      }
+
+      parseHashToState();
+      setupEvents();
+      renderAll();
+    }
+  </script>
+</body>
+</html>
